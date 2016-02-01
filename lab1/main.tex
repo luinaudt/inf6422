@@ -63,7 +63,7 @@
 % Header and footer for when a page split occurs within a problem environment
 \newcommand{\enterProblemHeader}[1]{
 \nobreak\extramarks{#1}{#1 continue sur la page suivante\ldots}\nobreak
-\nobreak\extramarks{#1 (continued)}{#1 continue sur la page suivante\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{\textit{#1} continue sur la page suivante\ldots}\nobreak
 }
 
 % Header and footer for when a page split occurs between problem environments
@@ -127,20 +127,56 @@
 
 \begin{document}
 
-\maketitle
-
-%----------------------------------------------------------------------------------------
-%	TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
-
-%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
-
-\newpage
-\tableofcontents
-\newpage
-
-\input{Thomas.tex}
-\input{Paul.tex}
+	\maketitle
+	
+	%----------------------------------------------------------------------------------------
+	%	TABLE OF CONTENTS
+	%----------------------------------------------------------------------------------------
+	
+	%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	\begin{homeworkProblem}[Mise en contexte]
+	
+	
+		\begin{homeworkSection}{1.1}
+		
+			L’épidémiologie pourrait être définie comme l’étude des rapports existant entre les
+			maladies ou tout autre phénomène biologique, et divers facteurs susceptibles d’exercer
+			une influence sur leur fréquence, distribution et évolution. Entre d’autres mots,
+			l’épidémiologie s’intéresse aux facteurs qui influencent la santé des populations. Plus
+			particulièrement, l’épidémiologie s’intéresse, entre autre, à étudier la dynamique de
+			propagation des maladies infectieuses afin d’établir des stratégies de prévention et
+			d’intervention permettant de diminuer l’impact sur la santé publique. À cet effet, la
+			modélisation mathématique s’est révélée particulièrement intéressante afin de simuler des
+			scénarios épidémiologiques, d’évaluer les risques associés et de quantifier l’efficacité et
+			l’impact de différentes méthodes d’intervention et de prévention. Plusieurs approches
+			peuvent être retenues, telles que les simulations numériques, les modèles déterministes ou
+			encore les modèles stochastiques. Chaque approche présente des avantages et des
+			inconvénients. Il convient donc de choisir la méthode la plus appropriée en fonction des
+			questions de recherche auxquelles vous souhaitez répondre.
+			
+		\end{homeworkSection}
+		
+		\begin{homeworkSection}{1.2}
+		
+			Appliquée à la sécurité informatique, l’épidémiologie pourrait être vue comme l’étude
+			des différents facteurs qui influencent la fréquence, la distribution et l’évolution des
+			logiciels malveillants. Plus particulièrement, l’approche épidémiologique a inspiré de
+			nombreux travaux de recherche portant sur l’étude de la propagation des logiciels
+			malveillants. Le présent laboratoire vous permettra de vous familiariser avec certaines
+			approches mathématiques fréquemment utilisées afin de modéliser la propagation de
+			logiciels malveillants au sein d’un réseau.
+		
+		\end{homeworkSection}
+	
+	\end{homeworkProblem}
+	
+	\input{Thomas.tex}
+	\input{Paul.tex}
 
 
 \end{document}

@@ -1,23 +1,71 @@
 % %----------------------------------------------------------------------------------------
-% %	PROBLEM 3
+% %	PROBLEM 4
 % %----------------------------------------------------------------------------------------
 
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Modèle stochastique]
+	
+	Dans l’article « Optimising networks Against Malware », l’auteur utilise un modèle
+	stochastique basé sur les chaînes de Markov afin de modéliser la propagation d’un vers
+	dans un réseau .
+	
+	\begin{homeworkSection}{4.1}
+	
+		Expliquez les caractéristiques d’un modèle stochastique et pourquoi ce type de
+		modèle s’applique dans le contexte de l’article. Est-ce qu’une approche déterministe
+		aurait été préférable? \\
+		
+		\problemAnswer{
+		
+		Un modèle stochastique repose sur des variables aléatoires représentant l'évolution possible d'un système au cours du temps. Ce type de modèle s'applique très bien dans le contexte de l'article car on modélise l'évolution de l'infection d'un système de machines au cours du temps, chaque ensemble de machines infectées étant représenté par un état, avec une certaine probabilité \textit{p} de passer à un autre état au temps \textit{t+1} (chaines de Markov).\\
+		Une approche déterministe n'aurait pas été réalisable, car les résultats de l'expérience ne sont pas fixes, et donc pas reproductibles. En effet, l'évolution de l'infection dépend de la rapidité à laquelle la première machine infectée réussit à atteindre le \textit{gateway} afin d'atteindre l'autre sous-réseau. Cela se vérifie sur la \ref{ExpG4}, où l'on voit que l'intervalle de confiance de l'expérience est très large.
+		
+		}
+		
+		\begin{figure}[h]
+			\caption{\label{ExpG4} Expérience avec G=4}
+			\includegraphics[width=\textwidth]{pictures/results-G=4.png}
+		\end{figure}
+		
+	\end{homeworkSection}
 
-\begin{homeworkSection}{3.1}
-
-\problemAnswer{ % Answer
-}
-\end{homeworkSection}
 \end{homeworkProblem}
 
 % %----------------------------------------------------------------------------------------
-% %	PROBLEM 2
+% %	PROBLEM 5
 % %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}
-% Question
+\begin{homeworkProblem}[Performance et optimisation]
+
+	Toujours dans l’article « Optimising networks Against Malware », l’auteur étudie
+	l’effet de la topologie du réseau sur la vitesse de propagation d’un vers informatique.\\
+	
+	\begin{homeworkSection}{5.1}
+	
+		Appliquez le concept du double-tétraèdre étudié en classe à l’article. Situez votre
+		double-tétraèdre dans un contexte d’optimisation, toujours en vous référant à l’article.
+		Expliquez quels sont les aspects de votre double-tétraèdre qui sont fixes, et ceux qui sont
+		modifiés.
+		
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{5.2}
+	
+		Quels autres aspects/méthodes (autres que la topologie du réseau) pourraient être
+		étudiés dans le cadre d’un problème d’optimisation où l’objectif est de limiter la vitesse
+		de propagation d’un logiciel malveillant dans un réseau? Donnez au minimum deux
+		exemples.
+	
+	\end{homeworkSection}
+	
+	\begin{homeworkSection}{5.3}
+		
+		Il a été démontré qu’une plus grande biodiversité au sein d’un écosystème permettait
+		de ralentir la propagation des virus ou des bactéries dangereuses. Comment pourriez-vous
+		appliquer le concept de diversité au sein d’un réseau informatique? Quelle(s) forme(s)
+		prendrait cette diversité? 
+	
+	\end{homeworkSection}
 
 
 \end{homeworkProblem}

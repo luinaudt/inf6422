@@ -66,8 +66,7 @@
 			Le seul paramètre variable est l'environnement : on va faire varier la topologie du réseau en jouant sur le nombre de \textit{gateway} interconnectant les différents sous-réseaux.\\
 			
 			On est donc en présence d'un problème d'optimisation du critère de performance, c'est à dire la vitesse de propagation du ver sur le réseau (qui doit être la plus lente possible du point de vue du défenseur), la variable étant le nombre de \textit{gateway}.
-			
-		
+				
 		}
 		
 	\end{homeworkSection}
@@ -80,7 +79,16 @@
 		exemples.\\
 
 		\problemAnswer{
-
+		
+			Les autre méthodes suivantes pourraient être étudiées afin de limiter la propagation d'un logiciel malveillant dans le réseau:
+			
+			\begin{itemize}
+				\item L'utilisation d'un \textit{firewall}, filtrant l'utilisation de certains ports, traditionnellement utilisés pour transmettre des virus (telnet, ...)
+				\item Le blocage de certains paquets ICMP (comme le \textit{ECHO} utilisé par la commande \textit{Ping}) afin d'empêcher l'attaquant de scanner les ports ouverts d'une machine.
+				\item L'utilisation d'un antivirus ayant une base de donnée des signatures des virus connus, ou étant capable de reconnaître les comportements suspects des virus (ouverture de connexion sur des ports peu usités, ...)
+				\item Demander à l'utilisateur une confirmation avant l'installation de tout programme en provenance du réseau.
+			\end{itemize}
+			
 		
 		}
 	

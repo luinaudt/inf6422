@@ -14,6 +14,28 @@
 			semi-supervisé, et supervisé. Expliquez les caractéristiques de chacune de ces méthodes.
 
 			\problemAnswer{
+			Pour l'analyse et la catégorisation de grande quantité de données, les réseaux de neurones sont de plus en plus utilisés. 
+			Pour pouvoir utiliser un réseau de neurones il faut cependant l'entrainer.
+			Dans cette partie, nous allons présenter 3 méthodes pour entrainer un réseau de neurones.
+			
+			
+			\paragraph{L'apprentissage non-supervisé.}
+			Dans cette méthode, c'est l'algorithme qui effectue le tri de classe.
+			Pour cela, il les traites comme un ensemble de variable aléatoire.
+			L'apprentissage non-supervisé a donc l'avantage de ne pas nécessiter un expert.
+			\cite{apprentissage_np}
+
+			
+			\paragraph{L'apprentissage supervisé.}
+			L'apprentissage supervisé consiste à donné un jeu de donnée étiqueté au réseau de neurones.
+			Contrairement à l'apprentissage non-supervisé, cette méthode nécessite d'étiqueter tout le jeu de donnée par un expert.
+			Une fois le réseau "entrainé", il devrait être capable de catégorisé une entrée automatiquement.
+			
+			\paragraph{L'apprentissage semi-supervisé.}
+			Cette méthode regroupe l'apprentissage supervisé et non-supervisé.			
+			Dans l'apprentissage semi-supervisé, on utilise deux set de données, un étiqueté et un non étiqueté.
+			Celui-ci permet de trier plus facilement des grands ensembles de données.
+			\cite{apprentissage_sp}
 			
 			}
 			
@@ -24,7 +46,7 @@
 			La classification naïve bayésienne (naive bayes classifier) est un exemple de
 			méthode qui peut être utilisée afin de résoudre des problèmes de classification par
 			apprentissage supervisé. Appliquez cette méthode au fichier spambase afin de filtrer les
-			messages en fonction des 57 variables continues. Utilisez 66% des données pour la phase
+			messages en fonction des 57 variables continues. Utilisez 66\% des données pour la phase
 			d’apprentissage.
 			
 			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai positif,

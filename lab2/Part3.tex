@@ -56,7 +56,7 @@
 			\problemAnswer{
 						
 			La classification bayésienne naïve est une méthode qui considère que toutes les classes sont indépendantes.
-			Dans le cas de la recherche de SPAM, cela revient à dire que la probabilité d'apparition d'un mot ne dépend des autres.
+			Dans le cas de la recherche de SPAM, cela revient à dire que la probabilité d'apparition d'un mot ne dépend des autres.\cite{wiki_bayesien}
 			
 			\begin{itemize}
 			\item \textbf{Taux de faux positif} : 0,163
@@ -75,6 +75,10 @@
 			Dans la matrice de confusion est donnée dans le tableau \ref{tab:confMat32}.
 			La matrice montre clairement les problèmes de classement avec beaucoup de "a" qui se retrouvent en "b".
 			
+			Étant donné que la méthode bayésienne s'applique sur des données non corrélé, il est normal que les résultats ne soit pas bon.
+			En effet lors de l'écriture d'un texte, les différents mots utilisé sont liés.
+			Par exemple, si l'on met le mot bonjour, il y a une forte chance qu'il soit suivi d'un prénom.
+			
 			}
 			\begin{table}
 			\centering
@@ -88,7 +92,7 @@
 			310 & 637 & b=0 \\ 
 			\hline 
 			\end{tabular} 
-			\caption{Matrice de confusion}
+			\caption{Matrice de confusion pour bayésienne}
 			\label{tab:confMat32}			
 			\end{table}			
 			
@@ -96,32 +100,69 @@
 			
 		\begin{homeworkSection}{3.3}
 
-			Une autre méthode de classification, les forêts d’arbres décisionnels (random forest), consiste à
+			Une autre méthode de classification, les forêts d'arbres décisionnels (random forest), consiste à
 			effectuer un apprentissage sur plusieurs arbres de décisions. Appliquez
 			cette méthode au fichier spambase et utilisez les 57 variables continues. Utilisez 66\% des
-			données pour la phase d’apprentissage.
+			données pour la phase d'apprentissage.
 			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai positif,
 			taux de faux positif, précision, sensibilité (recall), « F-measure » et l’aire sous la courbe
 			(ROC area). Donnez la matrice de confusion.
 
 			\problemAnswer{
+			La méthode <<random forest>> consiste à diviser l'ensemble de donnée en de multiple sous ensemble.
+			Cela permet donc de déterminer des probabilités relationnelles entre les classes, et donc d'avoir une meilleur répartition.\cite{wiki_randomforest}
+			
+			
+			\begin{itemize}
+			\item \textbf{Taux de faux positif} : 0,055
+			\item \textbf{Taux de vrai positif} : 0,952
+			\item \textbf{Précision} : 0,952
+			\item \textbf{Sensibilité} : 0,952
+			\item \textbf{<<F-Measure>>} : 0,952
+			\item \textbf{Aire sous la courbe} : 0,987
+			\end{itemize}
+
+			Avec cet algorithme, nous avons seulement 5\% de faux positif ce qui est un résultat plutôt bon.
+			Nous avons 95\% de vrai positif ce qui représente 5\% de message légitime classé comme spam.
+			Ce résultat est moins bon vue que l'on est prêt à recevoir quelques spam mais que l'on veut absolument évité de ne pas recevoir de courriel légitime.
+						
 			
 			}
-					
+			\begin{table}
+			\centering
+			\begin{tabular}{|c|c||c|}
+			
+			\hline 
+			a & b & classification \\ 
+			\hline 
+			575 & 42 & a=1 \\ 
+			\hline 
+			33 & 914 & b=0 \\ 
+			\hline 
+			\end{tabular} 
+			\caption{Matrice de confusion pour random forest}
+			\label{tab:confMat33}			
+			\end{table}						
 		\end{homeworkSection}
 		
 		\begin{homeworkSection}{3.4}
 
-			Donnez un exemple de contre-mesure de type Statistical attack qu’un spammeur
-			pourrait utiliser afin d’échapper à un filtre basé sur la fréquence des mots en utilisant une
-			méthode d’apprentissage automatique. Votre exemple de contre-mesure peut impliquer de
+			Donnez un exemple de contre-mesure de type Statistical attack qu'un spammeur
+			pourrait utiliser afin d'échapper à un filtre basé sur la fréquence des mots en utilisant une
+			méthode d'apprentissage automatique. Votre exemple de contre-mesure peut impliquer de
 			modifier le contenu du message. Proposez une solution qui permettrait de contrecarrer
 			cette contre-mesure.
 
 			\problemAnswer{
+			Une contre mesure qui permettrais de contrecarrer la méthode d'apprentissage automatique pourrait être l'utilisation de synonymes sur les termes important.
+			En effet, avec la sélection aléatoire de certain mot, nous réduisons le nombre de messages qui paraissent similaires.
 			
+			Pour se prémunir de ce genre d'attaque, il faudrait alors utiliser une classification des terme utilisé dans le texte.
+			On pourrait en effet utiliser le dictionnaire de synonymes pour identifier les mots dans des catégories communes.
+			Il faudrait pour cela ne plus considérer les mots mais simplement leur signification.
+			 
 			}
-					
+			
 		\end{homeworkSection}
 		
 			

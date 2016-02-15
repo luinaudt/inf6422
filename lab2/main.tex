@@ -31,8 +31,7 @@
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{pgfplots}
-\usepackage[backend=bibtex8, style=ieee, natbib=true,minnames=1, maxcitenames=2]{biblatex}
-\addbibresource{main.bib}
+
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -180,5 +179,8 @@
 	\input{Part3.tex}
 	\input{Part4.tex}
 
+	\clearpage
+	\bibliography{main}
+	\bibliographystyle{ieee}
 
 \end{document}

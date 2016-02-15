@@ -161,6 +161,17 @@
 
 			\problemAnswer{
 			
+			D'après la documentation, "\textit{A word [...] is any string of alphanumeric characters bounded by non-alphanumeric characters or end-of-string}". Ainsi, il suffit de couper les mots ayant un odd-ratio élevé avec un caractère non alphanumérique afin qu'ils ne soient plus pris en compte lors de la détection. On peut par exemple le faire avec un tiret et un retour à la ligne. On considère que les mots de ce mail avec un odd-ratio élevé sont \textit{virus}, \textit{Afghanistan}, \textit{delete}, \textit{everyone}, \textit{helping} et \textit{hacker}.\\
+			
+			\textit{DEAR RECEIVER,\\
+			You have just received a Taliban vi-\\rus. Since we are not so technologically
+			advanced in Afgha-\\nistan, this is a MANUAL vi-\\rus. Please click on
+			this link (http://clickme.com) to de-\\lete all the files on your hard disk
+			yourself and send this mail to every-\\one you know.
+			Thank you very much for hel-\\ping us.\\	\\
+			-Taliban ha-\\cker.}\\
+			
+			
 			}
 					
 		\end{homeworkSection}

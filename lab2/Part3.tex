@@ -54,8 +54,43 @@
 			(ROC area). Donnez la matrice de confusion.
 	
 			\problemAnswer{
+						
+			La classification bayésienne naïve est une méthode qui considère que toutes les classes sont indépendantes.
+			Dans le cas de la recherche de SPAM, cela revient à dire que la probabilité d'apparition d'un mot ne dépend des autres.
+			
+			\begin{itemize}
+			\item \textbf{Taux de faux positif} : 0,163
+			\item \textbf{Taux de vrai positif} : 0,78
+			\item \textbf{Précision} : 0,832
+			\item \textbf{Sensibilité} : 0,780
+			\item \textbf{<<F-Measure>>} : 0,781
+			\item \textbf{Aire sous la courbe} : 0,935
+			\end{itemize}
+			
+			Comme expliqué dans la question 2.2, dans un système de filtrage de spam, nous voulons éviter au maximum les faux positif et on peut accepter quelques vrais positifs.
+			Toutefois, on voit que dans le cas de la méthode bayésienne, nous avons plus de 16\% de faux positif avec seulement 78\% de message correctement détecté.
+			Cette méthode est donc mauvaise vue que nous avons plus de 22\% du spam non filtré.
+			Nous rejetons donc plus de message légitime que de spam.
+			
+			Dans la matrice de confusion est donnée dans le tableau \ref{tab:confMat32}.
+			La matrice montre clairement les problèmes de classement avec beaucoup de "a" qui se retrouvent en "b".
 			
 			}
+			\begin{table}
+			\centering
+			\begin{tabular}{|c|c||c|}
+			
+			\hline 
+			a & b & classification \\ 
+			\hline 
+			583 & 34 & a=1 \\ 
+			\hline 
+			310 & 637 & b=0 \\ 
+			\hline 
+			\end{tabular} 
+			\caption{Matrice de confusion}
+			\label{tab:confMat32}			
+			\end{table}			
 			
 		\end{homeworkSection}
 			

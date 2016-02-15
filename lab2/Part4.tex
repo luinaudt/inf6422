@@ -1,7 +1,7 @@
 	\begin{homeworkProblem}[Performance et optimisation]
 	
 
-		\begin{homeworkSection}{2.1}
+		\begin{homeworkSection}{4.1}
 
 			Comparez et discutez, en termes de performance, les résultats que vous avez obtenus
 			pour les différentes méthodes utilisées (régression logistique, classification naïve
@@ -14,7 +14,7 @@
 			
 		\end{homeworkSection}
 		
-		\begin{homeworkSection}{2.2}
+		\begin{homeworkSection}{4.2}
 			
 			Nommez un avantage et un inconvénient d’utiliser des filtres basés sur
 			l’apprentissage machine supervisé. Comparez avec l’apprentissage machine non
@@ -23,12 +23,23 @@
 			et n’oubliez pas de donner vos références.\\
 	
 			\problemAnswer{
+			Les méthodes de classification supervisé ont l'inconvénient de nécessité un expert capable de définir les caractéristiques du jeu de donnée en entré.\cite{apprentissage_s}
+			Cependant, elles permettent des précisions plus élevé.
+			Toutefois, cette méthode pose le problème d'être limité dans le temps.
+			En effet, il faut ré-entrainer le réseau de neurones, si l'on veut ajouter la détection des nouveau spam.
 			
+			Les méthodes d'apprentissage non supervisé propose des résultat de classification moins performant.
+			Ils ont toutefois l'avantage de ne pas nécessité d'intervention humaine.
+			Finalement, il propose une efficacité semblable entre des que l'attaque soit connu ou non connues.
+			Le besoin de ré-entrainer le réseau de neurones est plus faible.
+			\cite{spring:classComp}
+			
+			Finalement, une bonne approche serait d'utiliser le réseau de neurones avec un apprentissage par renforcement\cite{wiki-renforcement}, on pourrait ainsi demander à l'utilisateur de détecter les nouveaux spam.
 			}
 			
 		\end{homeworkSection}
 			
-		\begin{homeworkSection}{2.3}
+		\begin{homeworkSection}{4.3}
 
 			Le jeu de données spambase est principalement basé sur la fréquence d’apparition de
 			certains mots et sur la présence de lettres majuscule. Donnez au moins deux autres

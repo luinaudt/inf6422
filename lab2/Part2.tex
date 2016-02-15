@@ -1,0 +1,63 @@
+	\begin{homeworkProblem}[Méthode statistique]
+	
+			Une approche souvent utilisée revient à filtrer les messages électroniques sur la base de
+			leur contenu (content-based filtering). Un exemple classique consiste à filtrer les
+			messages en fonction de la fréquence d’apparition de certains mots. Utilisez le fichier
+			spambase afin d’appliquer une méthode statistique qui vous permettra de classifier les
+			messages en deux catégories, soit spam (1) ou non spam (0).
+			Compte tenu de la nature binomiale (0/1) de la variable dépendante, la régression
+			logistique  peut être utilisée comme méthode de classification. Votre variable
+			dépendante (0/1) représente la catégorie associée (spam ou non spam) et les variables
+			indépendantes représentent la fréquence d’apparition de certains mots.	
+	
+		\begin{homeworkSection}{2.1}
+
+			Effectuez une régression logistique en utilisant l’ensemble des variables (57)
+			contenues dans le fichier spambase. Divisez les données afin d’en utiliser 66% pour la
+			phase d’apprentissage de votre modèle. À quoi servira l’autre 33%?
+			Donnez pour chaque variable indépendante son coefficient ainsi que son « odd ratio »
+			associé. Quelle est la signification de ces deux valeurs?
+
+			\problemAnswer{
+			
+			}
+			
+		\end{homeworkSection}
+		
+		\begin{homeworkSection}{2.2}
+			
+			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai
+			positif, taux de faux positif, précision, sensibilité (recall), « F-measure » et l’aire sous la
+			courbe (ROC area). Expliquez la signification de chacune de ces mesures.
+			Donnez la matrice de confusion de votre modèle et expliquez ce qu’elle représente. 
+	
+			\problemAnswer{
+			
+			}
+			
+		\end{homeworkSection}
+			
+		\begin{homeworkSection}{2.3}
+			
+			Donnez un exemple de contre-mesure de type Tokenization attack qu’un spammeur
+			pourrait facilement utiliser afin de contourner un filtre basé uniquement sur la fréquence
+			d’apparition de certains mots. Votre méthode ne doit pas modifier la signification du
+			message et ne doit pas ajouter de nouveaux mots. Appliquez votre méthode au message
+			suivant:\\
+
+			\textit{DEAR RECEIVER,\\ \\	
+			You have just received a Taliban virus. Since we are not so technologically
+			advanced in Afghanistan, this is a MANUAL virus. Please click on
+			this link (http://clickme.com) to delete all the files on your hard disk
+			yourself and send this mail to everyone you know.
+			Thank you very much for helping us.\\	\\
+			-Taliban hacker.}
+
+			\problemAnswer{
+			
+			}
+					
+		\end{homeworkSection}
+		
+			
+	\end{homeworkProblem}

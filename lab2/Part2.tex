@@ -104,11 +104,42 @@
 			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai
 			positif, taux de faux positif, précision, sensibilité (recall), « F-measure » et l’aire sous la
 			courbe (ROC area). Expliquez la signification de chacune de ces mesures.
-			Donnez la matrice de confusion de votre modèle et expliquez ce qu’elle représente. 
+			Donnez la matrice de confusion de votre modèle et expliquez ce qu’elle représente.\\
 	
 			\problemAnswer{
 			
+			Weka nous donne les performances de notre modèle à l'aide du tableau de la figure \ref{accuracy} 1.
+			Voici la signification des différentes valeurs fournies :
+			
+			\begin{itemize}
+			\item \textbf{Taux de vrai positif} : C'est le taux de messages correctement classifiés comme spam.
+			\item \textbf{Taux de faux positif} : C'est le taux de messages classifiés comme spam alors qu'ils étaient en réalité légitimes.
+			\item \textbf{Précision} : C'est le rapport entre le nombre de messages correctement classifiés comme spam sur le nombre total de messages classifiés comme spam.
+			\item \textbf{Sensibilité} :C'est le rapport entre le nombre de messages correctement classifiés comme spam sur le nombre de messages étant réellement du spam. C'est l'équivalent du taux de vrai positif.
+			\item \textbf{F-measure} : C'est une formule donnant un critère de performance sous forme d'une moyenne pondérés de la précision et de la sensibilité. On la calcule de la façon suivante : $ F = 2* \frac{precision*sensibilite}{precision + sensibilite}$.
+			\item \textbf{Aire sous la courbe} : La courbe représente le taux de vrais-positifs en fonction du taux de faux-positifs. Soient un message de spam et un message légitime choisis aléatoirement, et la question "Lequel de ces deux messages est du spam ?".  L'aire sous la courbe représente alors la probabilité que notre classificateur réponde correctement à cette question.\\
+			\end{itemize}
+			
+			Pour un système classificateur de mails, on peut accepter quelques vrais négatifs (du spam classé comme légitime), mais on ne veut pas de de faux positif (des messages légitimes classifiés comme spam). Le taux de faux positifs étant de 0.046 et le taux de vrais négatifs étant de 0.109, ces critères sont relativement bien respectés, mais des progrès sont à faire. Plus de 90\% du spam est filtré, mais ils reste tout de même 5\% de messages légitimes qui partent au spam, ce qui oblige à vérifier régulièrement sa boite spam pour voir si un message important ne s'y trouve pas.\\
+			
+			La matrice de confusion de notre modèle se trouve à la figure \ref{matrix}.
+			Les lignes représentent les deux classes (spam et légitime) correspondant à la réalité, et les colonnes les deux mêmes classes, mais pour le résultat de la classification. On peut donc retrouver tous les résultats précédents (mis à part l'air sous la courbe) à partir de cette matrice. En normalisant la matrice, plus celle-ci se rapproche d'une matrice diagonale, plus notre classificateur est performant (on n'a alors ni faux positif ni vrai négatif).
+			
 			}
+			
+			\begin{figure}[h]
+			\begin{center}
+			\includegraphics[width=\textwidth]{pictures/accuracy.png}
+			\caption{\label{accuracy} Performances du modèle}
+			\end{center}
+			\end{figure}
+			
+			\begin{figure}[h]
+			\begin{center}
+			\includegraphics[]{pictures/confusion_matrix.png}
+			\caption{\label{matrix} Matrice de confusion}
+			\end{center}
+			\end{figure}
 			
 		\end{homeworkSection}
 			
@@ -120,13 +151,13 @@
 			message et ne doit pas ajouter de nouveaux mots. Appliquez votre méthode au message
 			suivant:\\
 
-			\textit{DEAR RECEIVER,\\ \\	
+			\textit{DEAR RECEIVER,\\
 			You have just received a Taliban virus. Since we are not so technologically
 			advanced in Afghanistan, this is a MANUAL virus. Please click on
 			this link (http://clickme.com) to delete all the files on your hard disk
 			yourself and send this mail to everyone you know.
 			Thank you very much for helping us.\\	\\
-			-Taliban hacker.}
+			-Taliban hacker.}\\
 
 			\problemAnswer{
 			

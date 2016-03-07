@@ -782,6 +782,19 @@ FUNCTION {misc}
   empty.misc.check
 }
 
+FUNCTION {wiki}
+{ output.bibitem
+  format.authors output
+  title howpublished new.block.checkb
+  format.title output
+  howpublished new.block.checka
+  howpublished output
+  journal output
+  format.date output
+  new.block
+  fin.entry
+}
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check

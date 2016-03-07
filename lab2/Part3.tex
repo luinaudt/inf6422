@@ -11,30 +11,30 @@
 
 			Les méthodes d’apprentissage automatique peuvent être divisées en plusieurs
 			catégories. Parmi les plus courantes, nous retrouvons l’apprentissage non-supervisé,
-			semi-supervisé, et supervisé. Expliquez les caractéristiques de chacune de ces méthodes.
+			semi-supervisé, et supervisé. Expliquez les caractéristiques de chacune de ces méthodes.\\
 
 			\problemAnswer{
-			Pour l'analyse et la catégorisation de grande quantité de données, les réseaux de neurones sont de plus en plus utilisés. 
+			Pour l'analyse et la catégorisation de grandes quantités de données, les réseaux de neurones sont de plus en plus utilisés. 
 			Pour pouvoir utiliser un réseau de neurones il faut cependant l'entrainer.
 			Dans cette partie, nous allons présenter 3 méthodes pour entrainer un réseau de neurones.
 			
 			
 			\paragraph{L'apprentissage non-supervisé.}
 			Dans cette méthode, c'est l'algorithme qui effectue le tri de classe.
-			Pour cela, il les traites comme un ensemble de variable aléatoire.
+			Pour cela, il les traite comme un ensemble de variables aléatoires.
 			L'apprentissage non-supervisé a donc l'avantage de ne pas nécessiter un expert.
 			\cite{apprentissage_np}
 
 			
 			\paragraph{L'apprentissage supervisé.}
-			L'apprentissage supervisé consiste à donné un jeu de donnée étiqueté au réseau de neurones.
-			Contrairement à l'apprentissage non-supervisé, cette méthode nécessite d'étiqueter tout le jeu de donnée par un expert.
-			Une fois le réseau "entrainé", il devrait être capable de catégorisé une entrée automatiquement.
+			L'apprentissage supervisé consiste à donner un jeu de données étiquetées au réseau de neurones.
+			Contrairement à l'apprentissage non-supervisé, cette méthode nécessite d'étiqueter tout le jeu de données par un expert.
+			Une fois le réseau "entrainé", il devrait être capable de catégoriser une entrée automatiquement.
 			
 			\paragraph{L'apprentissage semi-supervisé.}
 			Cette méthode regroupe l'apprentissage supervisé et non-supervisé.			
-			Dans l'apprentissage semi-supervisé, on utilise deux set de données, un étiqueté et un non étiqueté.
-			Celui-ci permet de trier plus facilement des grands ensembles de données.
+			Dans l'apprentissage semi-supervisé, on utilise deux sets de données, un étiqueté et un non étiqueté.
+			Celui-ci permet de trier plus facilement de grands ensembles de données.
 			\cite{apprentissage_sp}
 			
 			}
@@ -51,32 +51,29 @@
 			
 			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai positif,
 			taux de faux positif, précision, sensibilité (recall), « F-measure » et l’aire sous la courbe
-			(ROC area). Donnez la matrice de confusion.
+			(ROC area). Donnez la matrice de confusion.\\
 	
 			\problemAnswer{
 						
 			La classification bayésienne naïve est une méthode qui considère que toutes les classes sont indépendantes.
-			Dans le cas de la recherche de SPAM, cela revient à dire que la probabilité d'apparition d'un mot ne dépend des autres.\cite{wiki_bayesien}
+			Dans le cas de la recherche de SPAM, cela revient à dire que la probabilité d'apparition d'un mot ne dépend pas des autres.\cite{wiki_bayesien}
 			
 			\begin{itemize}
-			\item \textbf{Taux de faux positif} : 0,163
-			\item \textbf{Taux de vrai positif} : 0,78
-			\item \textbf{Précision} : 0,832
-			\item \textbf{Sensibilité} : 0,780
-			\item \textbf{<<F-Measure>>} : 0,781
-			\item \textbf{Aire sous la courbe} : 0,935
+			\item \textbf{Taux de faux positif} : 0,327
+			\item \textbf{Taux de vrai positif} : 0,945
+			\item \textbf{Précision} : 0,653
+			\item \textbf{Sensibilité} : 0,945
+			\item \textbf{<<F-Measure>>} : 0,772
+			\item \textbf{Aire sous la courbe} : 0,938
 			\end{itemize}
 			
-			Comme expliqué dans la question 2.2, dans un système de filtrage de spam, nous voulons éviter au maximum les faux positif et on peut accepter quelques vrais positifs.
-			Toutefois, on voit que dans le cas de la méthode bayésienne, nous avons plus de 16\% de faux positif avec seulement 78\% de message correctement détecté.
-			Cette méthode est donc mauvaise vue que nous avons plus de 22\% du spam non filtré.
-			Nous rejetons donc plus de message légitime que de spam.
+			Comme expliqué dans la question 2.2, dans un système de filtrage de spam, nous voulons éviter au maximum les faux positifs et on peut accepter quelques vrais négatifs.
+			Toutefois, on voit que dans le cas de la méthode bayésienne, nous avons plus de 32\% de faux positifs, ce qui est beaucoup trop (un tiers des courriers légitimes passe en spam !).
 			
-			Dans la matrice de confusion est donnée dans le tableau \ref{tab:confMat32}.
-			La matrice montre clairement les problèmes de classement avec beaucoup de "a" qui se retrouvent en "b".
+			Dans la matrice de confusion donnée dans le tableau \ref{tab:confMat32}, on voit clairement les problèmes de classement avec un grand nombre dans la case en bas à gauche (faux positifs).
 			
-			Étant donné que la méthode bayésienne s'applique sur des données non corrélé, il est normal que les résultats ne soit pas bon.
-			En effet lors de l'écriture d'un texte, les différents mots utilisé sont liés.
+			Étant donné que la méthode bayésienne s'applique sur des données non corrélées, il est normal que les résultats ne soient pas bons.
+			En effet, lors de l'écriture d'un texte, les différents mots utilisés sont liés.
 			Par exemple, si l'on met le mot bonjour, il y a une forte chance qu'il soit suivi d'un prénom.
 			
 			}
@@ -106,25 +103,24 @@
 			données pour la phase d'apprentissage.
 			Évaluez et discutez des performances de votre modèle en termes de : taux de vrai positif,
 			taux de faux positif, précision, sensibilité (recall), « F-measure » et l’aire sous la courbe
-			(ROC area). Donnez la matrice de confusion.
+			(ROC area). Donnez la matrice de confusion.\\
 
 			\problemAnswer{
-			La méthode <<random forest>> consiste à diviser l'ensemble de donnée en de multiple sous ensemble.
-			Cela permet donc de déterminer des probabilités relationnelles entre les classes, et donc d'avoir une meilleur répartition.\cite{wiki_randomforest}
+			La méthode <<random forest>> consiste à diviser l'ensemble de donnée en de multiples sous-ensembles.
+			Cela permet de déterminer des probabilités relationnelles entre les classes, et donc d'avoir une meilleur répartition.\cite{wiki_randomforest}
 			
 			
 			\begin{itemize}
-			\item \textbf{Taux de faux positif} : 0,055
-			\item \textbf{Taux de vrai positif} : 0,952
-			\item \textbf{Précision} : 0,952
-			\item \textbf{Sensibilité} : 0,952
-			\item \textbf{<<F-Measure>>} : 0,952
+			\item \textbf{Taux de faux positif} : 0,037
+			\item \textbf{Taux de vrai positif} : 0,927
+			\item \textbf{Précision} : 0,942
+			\item \textbf{Sensibilité} : 0,927
+			\item \textbf{<<F-Measure>>} : 0,935
 			\item \textbf{Aire sous la courbe} : 0,987
 			\end{itemize}
 
-			Avec cet algorithme, nous avons seulement 5\% de faux positif ce qui est un résultat plutôt bon.
-			Nous avons 95\% de vrai positif ce qui représente 5\% de message légitime classé comme spam.
-			Ce résultat est moins bon vue que l'on est prêt à recevoir quelques spam mais que l'on veut absolument évité de ne pas recevoir de courriel légitime.
+			Avec cet algorithme, nous avons seulement 4\% de faux positif ce qui est un résultat plutôt bon (peu de messages légitimes sont classés comme spam).
+			Nous avons 93\% de vrai positif ce qui représente seulement 7\% de spam classé comme légitime.
 						
 			
 			}
@@ -135,9 +131,9 @@
 			\hline 
 			a & b & classification \\ 
 			\hline 
-			575 & 42 & a=1 \\ 
+			575 & 45 & a=1 \\ 
 			\hline 
-			33 & 914 & b=0 \\ 
+			35 & 912 & b=0 \\ 
 			\hline 
 			\end{tabular} 
 			\caption{Matrice de confusion pour random forest}
@@ -151,13 +147,13 @@
 			pourrait utiliser afin d'échapper à un filtre basé sur la fréquence des mots en utilisant une
 			méthode d'apprentissage automatique. Votre exemple de contre-mesure peut impliquer de
 			modifier le contenu du message. Proposez une solution qui permettrait de contrecarrer
-			cette contre-mesure.
+			cette contre-mesure.\\
 
 			\problemAnswer{
-			Une contre mesure qui permettrais de contrecarrer la méthode d'apprentissage automatique pourrait être l'utilisation de synonymes sur les termes important.
-			En effet, avec la sélection aléatoire de certain mot, nous réduisons le nombre de messages qui paraissent similaires.
+			Une contre-mesure qui permettrait de contrecarrer la méthode d'apprentissage automatique pourrait être l'utilisation de synonymes sur les termes importants.
+			En effet, avec la sélection aléatoire de certains mots, nous réduisons le nombre de messages qui paraissent similaires.
 			
-			Pour se prémunir de ce genre d'attaque, il faudrait alors utiliser une classification des terme utilisé dans le texte.
+			Pour se prémunir de ce genre d'attaque, il faudrait alors utiliser une classification des termes utilisés dans le texte.
 			On pourrait en effet utiliser le dictionnaire de synonymes pour identifier les mots dans des catégories communes.
 			Il faudrait pour cela ne plus considérer les mots mais simplement leur signification.
 			 

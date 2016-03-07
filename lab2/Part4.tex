@@ -9,6 +9,9 @@
 			donner les meilleures performances pour le jeu de données spambase?\\
 
 			\problemAnswer{
+
+				On peut tout de suite éliminer la méthode naïve bayésienne, qui apporte beaucoup trop de faux positifs.
+				Les méthodes de la régression logistique et de la forêt d'arbres décisionnels ont des résultats semblables plutôt corrects, avec un taux de faux positifs inférieur à 5\% et un taux de vrais négatifs inférieur à 10\%. Cependant, la méthode de la forêt d'arbres décisionnels a l'avantage de se baser sur l'apprentissage automatique, ce qui veut dire que ses résultats s'amélioreront au fil du temps contrairement à celle de la régression logistique. C'est donc la solution la plus performante parmi les trois proposées, sur le jeu de donnés \textit{spambase}.  			
 			
 			}
 			
@@ -23,18 +26,15 @@
 			et n’oubliez pas de donner vos références.\\
 	
 			\problemAnswer{
-			Les méthodes de classification supervisé ont l'inconvénient de nécessité un expert capable de définir les caractéristiques du jeu de donnée en entré.\cite{apprentissage_s}
-			Cependant, elles permettent des précisions plus élevé.
-			Toutefois, cette méthode pose le problème d'être limité dans le temps.
-			En effet, il faut ré-entrainer le réseau de neurones, si l'on veut ajouter la détection des nouveau spam.
+			Les méthodes de classification supervisée ont l'inconvénient de nécessiter un expert capable de définir les caractéristiques du jeu de données en entrée \cite{apprentissage_s}.
+			Cependant, elles permettent des précisions plus élevées, mais elles posent le problème d'être limitées dans le temps.
+			En effet, il faut ré-entrainer le réseau de neurones, si l'on veut ajouter la détection de nouveau spam.
 			
-			Les méthodes d'apprentissage non supervisé propose des résultat de classification moins performant.
-			Ils ont toutefois l'avantage de ne pas nécessité d'intervention humaine.
-			Finalement, il propose une efficacité semblable entre des que l'attaque soit connu ou non connues.
-			Le besoin de ré-entrainer le réseau de neurones est plus faible.
-			\cite{spring:classComp}
+			Les méthodes d'apprentissage non supervisé proposent des résultat de classification moins performants.
+			Elles ont toutefois l'avantage de ne pas nécessiter d'intervention humaine, et le besoin de ré-entrainer le réseau de neurones est plus faible \cite{spring:classComp}.
 			
-			Finalement, une bonne approche serait d'utiliser le réseau de neurones avec un apprentissage par renforcement\cite{wiki-renforcement}, on pourrait ainsi demander à l'utilisateur de détecter les nouveaux spam.
+			
+			Finalement, une bonne approche serait d'utiliser le réseau de neurones avec un apprentissage par renforcement \cite{wiki-renforcement}, on pourrait ainsi demander à l'utilisateur de détecter les nouveaux spam.
 			}
 			
 		\end{homeworkSection}
@@ -53,7 +53,7 @@
 			
 			\begin{itemize}
 			\item Des informations du header comme le champs "FROM", la date, la taille du message ou encore le nombre de pièces jointes
-			\item Les images présentes dans le mail, car du texte peut y être écrit
+			\item Les images présentent dans le mail, car du texte peut y être écrit
 			\item L'ordre d'apparition des mots
 			\end{itemize}
 			

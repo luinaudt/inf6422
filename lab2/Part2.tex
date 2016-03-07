@@ -120,26 +120,40 @@
 			\item \textbf{Aire sous la courbe} : La courbe représente le taux de vrais-positifs en fonction du taux de faux-positifs. Soient un message de spam et un message légitime choisis aléatoirement, et la question "Lequel de ces deux messages est du spam ?".  L'aire sous la courbe représente alors la probabilité que notre classificateur réponde correctement à cette question.\\
 			\end{itemize}
 			
+			Les résultats obtenus sont les suivantes :
+			
+			\begin{itemize}
+			\item \textbf{Taux de faux positif} : 0,046
+			\item \textbf{Taux de vrai positif} : 0,891
+			\item \textbf{Précision} : 0,926
+			\item \textbf{Sensibilité} : 0,891
+			\item \textbf{<<F-Measure>>} : 0,908
+			\item \textbf{Aire sous la courbe} : 0,971
+			\end{itemize}
+			
 			Pour un système classificateur de mails, on peut accepter quelques vrais négatifs (du spam classé comme légitime), mais on ne veut pas de de faux positif (des messages légitimes classifiés comme spam). Le taux de faux positifs étant de 0.046 et le taux de vrais négatifs étant de 0.109, ces critères sont relativement bien respectés, mais des progrès sont à faire. Plus de 90\% du spam est filtré, mais ils reste tout de même 5\% de messages légitimes qui partent au spam, ce qui oblige à vérifier régulièrement sa boite spam pour voir si un message important ne s'y trouve pas.\\
 			
-			La matrice de confusion de notre modèle se trouve à la figure \ref{matrix}.
+			La matrice de confusion de notre modèle se trouve à la figure \ref{tab:confMat22}.
 			Les lignes représentent les deux classes (spam et légitime) correspondant à la réalité, et les colonnes les deux mêmes classes, mais pour le résultat de la classification. On peut donc retrouver tous les résultats précédents (mis à part l'air sous la courbe) à partir de cette matrice. En normalisant la matrice, plus celle-ci se rapproche d'une matrice diagonale, plus notre classificateur est performant (on n'a alors ni faux positif ni vrai négatif).
 			
 			}
 			
-			\begin{figure}[h]
-			\begin{center}
-			\includegraphics[width=\textwidth]{pictures/accuracy.png}
-			\caption{\label{accuracy} Performances du modèle}
-			\end{center}
-			\end{figure}
 			
-			\begin{figure}[h]
-			\begin{center}
-			\includegraphics[]{pictures/confusion_matrix.png}
-			\caption{\label{matrix} Matrice de confusion}
-			\end{center}
-			\end{figure}
+			\begin{table}
+			\centering
+			\begin{tabular}{|c|c||c|}
+			
+			\hline 
+			a & b & classification \\ 
+			\hline 
+			550 & 67 & a=1 \\ 
+			\hline 
+			44 & 903 & b=0 \\ 
+			\hline 
+			\end{tabular} 
+			\caption{Matrice de confusion pour random forest}
+			\label{tab:confMat22}			
+			\end{table}			
 			
 		\end{homeworkSection}
 			

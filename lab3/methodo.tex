@@ -4,11 +4,11 @@ Puis nous avons appliqué notre modèle en analysant des jeux de données.
 Dans cette section, nous expliquerons tout d'abord notre modèle mathématiques puis nous expliquerons comment nous avons appliqué ce modèle à nos données.
 %grandeur concernant la biodiversité du système.
 
-\subsection{Modèle mathématique}
+\subsection{Modèle mathématique}\label{sec:modelMath}
 
 Afin de définir notre modèle mathématique, nous avons basé notre approche sur un phénomène physique homologue : la thermodynamique.
 Nous allons donc définir une entropie logicielle qui sera liée à la "biodiversité" du système.
-Redéfinissons tout d'abord le premier principe de la thermodynamique : Il y a conservation de l'énergie. 
+Redéfinissons tout d'abord le premier principe de la thermodynamique~: Il y a conservation de l'énergie. 
 
 \[
 \Delta E = \Delta U = W + Q
@@ -21,7 +21,7 @@ La seconde loi de la thermodynamique nous donne :
 S_{creation} = \Delta S_{syst} + \Delta S_{ext} \geq 0
 \]
 
-Cela se caractérise dans notre cas par un principe simple : tout changement de configuration dans notre système, quel qu'il soit, crée de l'entropie et donc augmente, au moins temporairement, la difficulté de l'attaque.
+Cela se caractérise dans notre cas par un principe simple~: tout changement de configuration dans notre système, quel qu'il soit, crée de l'entropie et donc augmente, au moins temporairement, la difficulté de l'attaque.
 Dans le cas ou l'entropie de notre système diminuerai, il y a tout de même une augmentation de l'entropie du côté de l'attaquant. Cela s'explique par le fait que l'état du nouveau système lui est inconnu. Il doit à nouveau refaire toute son analyse avant d'effectuer une nouvelle attaque. On notera également que sans action spécifique du défenseur, en laissant les administrateurs des sous-systèmes faire les mises à jour indépendamment, l'entropie du système global va augmenter de manière naturelle au cours du temps. 
 
 Le second principe peut également s'écrire :
@@ -51,5 +51,72 @@ Pour cela, nous avons considéré que les versions de logiciel donnés par les s
 
 
 \subsubsection{Application du modèle mathématique}
+Notre modèle mathématique prend en compte d'une part la variabilité des différents systèmes dans l'environnement ainsi que les mises à jours.
+En effet, nous avons précédemment expliqué qu'une mise à jours amenait un travail supplémentaire à fournir par l'attaquant.
+Nous appliquons donc simulation, une où l'on considère la complexité de l'attaque liée à l'hétérogénéité du système et une où l'on considère l'impact des mises à jours sur l'entropie.
+
+\paragraph{L'impact de l'hétérogénéité du système}
+Le fait d'avoir un système hétérogène amène à une augmentation du nombre total de vulnérabilité.
+Cependant cette diversité peut rend une attaque global plus complexe vue que chacun des systèmes sera sensible à des attaques différentes.
+La figure~\ref{fig:heteImpactVuln} exprime cette notion de non concordance entre les vulnérabilités et leur version.
+Dans cette figure, les nœuds "Ln" représentent une version de logiciel et les noeuds "Vn" représentent un numéro de vulnérabilité.
+Nous voyons que certaine version n'ont aucune vulnérabilité communes avec d'autre tel que "L4" avec et "L5".
+Dans ce cas, il est plus compliqué d'attaquer les deux système simultanément.
+Cependant, si nous prenons le cas de "L1" et "L2", ils sont tout deux sensibles à "V1" et "V2".
+Dans ce cas, la diversité amène une augmentation du risque d'attaques.
 
 
+\begin{figure}
+\centering
+%peut être la faire avec des exemple de vulnérabilité réelles
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1cm,
+  thick,version node/.style={circle,fill=blue!15,draw,
+  font=\sffamily\small\bfseries,minimum size=5mm}, vulne node/.style={circle,fill=red!15,draw,
+  font=\sffamily\small\bfseries,minimum size=5mm}]
+  
+  \node[version node] (L0) {L1};
+  \node[version node] (L1) [below of=L0] {L2};
+  \node[version node] (L2) [below of=L1] {L3};
+  \node[version node] (L3) [below of=L2] {L4};
+  \node[version node] (L4) [below of=L3] {L5};
+  
+  \node[vulne node] (V1) [right of=L0, node distance=3cm] {V1};
+  \node[vulne node] (V2) [below of=V1] {V2};
+  \node[vulne node] (V3) [below of=V2] {V3};
+  \node[vulne node] (V4) [below of=V3] {V4};
+  \node[vulne node] (V5) [below of=V4] {V5};
+
+%connexion vulnerabilité 1
+  \draw [-latex'] (V1) -- (L0);
+  \draw [-latex'] (V1) -- (L1);
+  \draw [-latex'] (V1) -- (L2);
+  \draw [-latex'] (V1) -- (L4);
+  
+%connexion vulnerabilité 2
+  \draw [-latex'] (V2) -- (L0);
+  \draw [-latex'] (V2) -- (L1);
+  \draw [-latex'] (V2) -- (L2);
+
+%connexion vulnerabilité 3
+  \draw [-latex'] (V3) -- (L0);
+  \draw [-latex'] (V3) -- (L2);
+
+%connexion vulnerabilité 4
+%  \draw [-latex'] (V4) -- (L4);
+  \draw [-latex'] (V4) -- (L2);
+  \draw [-latex'] (V4) -- (L3);
+
+%connexion vulnerabilité 5
+  \draw [-latex'] (V5) -- (L4);
+ 
+  
+\end{tikzpicture}
+\caption{Schéma de la relation entre la version d'un logiciel et les vulnérabilités associées.}
+\label{fig:heteImpactVuln}
+\end{figure}
+
+\paragraph{L'impact des mises à jours}
+Dans le paragraphe précédent, nous avons expliqué l'intérêt qu'il y a à la diversité des versions.
+Toutefois, nous n'avons pas pris en compte l'ancienneté d'une vulnérabilité. 
+L'ancienneté d'une vulnérabilité la rend plus facilement exploitable car plus connu.
+De plus, comme expliqué dans la section~\ref{sec:modelMath}, le fait de faire des mises à jours forcera l'attaquant à augmenter l'effort pour être capable de s'adapter à ce changement.

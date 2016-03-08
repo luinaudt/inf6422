@@ -22,7 +22,7 @@ S_{creation} = \Delta S_{syst} + \Delta S_{ext} \geq 0
 \]
 
 Cela se caractérise dans notre cas par un principe simple : tout changement de configuration dans notre système, quel qu'il soit, crée de l'entropie et donc augmente, au moins temporairement, la difficulté de l'attaque.
-Dans le cas ou l'entropie de notre système diminuerai , il y a tout de même une augmentation de l'entropie du côté de l'attaquant. Cela s'explique par le fait que l'état du nouveau système lui est inconnu. Il doit à nouveau refaire toute son analyse avant d'effectuer une nouvelle attaque.
+Dans le cas ou l'entropie de notre système diminuerai, il y a tout de même une augmentation de l'entropie du côté de l'attaquant. Cela s'explique par le fait que l'état du nouveau système lui est inconnu. Il doit à nouveau refaire toute son analyse avant d'effectuer une nouvelle attaque. On notera également que sans action spécifique du défenseur, en laissant les administrateurs des sous-systèmes faire les mises à jour indépendamment, l'entropie du système global va augmenter de manière naturelle au cours du temps. 
 
 Le second principe peut également s'écrire :
 
@@ -32,6 +32,8 @@ Le second principe peut également s'écrire :
 
 À quoi correspondent toutes ces grandeurs physiques dans notre système ? On va associer Q à l'effort fourni pour effectuer des mises à jours (Si Q est nul, il n'y a pas d'entropie créée), et W sera le travail fourni par l'attaquant pour effectuer son attaque. Du côté du défenseur, Q va en réalité être négatif. En effet, on va associer l'énergie du système à la quantité d'attaques subies. On veut donc en permanence le "refroidir".
 De même, la température T va être associée à la vulnérabilité des versions des logiciels du système. Plus les versions sont anciennes, plus elles seront vulnérables et donc la température va augmenter en fonction du temps.
+On notera également que plus l'entropie du système est grande, plus le travail à fournir par l'attaquant sera important.
+
 
 
 \subsection{Application du modèle}

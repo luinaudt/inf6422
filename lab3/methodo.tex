@@ -1,8 +1,10 @@
+
 Afin de réaliser notre analyse, nous avons procédé en deux étapes.
 Tout d'abord nous avons défini un modèle mathématique permettant d'estimer le coût d'une attaque et de la défense.
 Puis nous avons appliqué notre modèle en analysant des jeux de données.
 Dans cette section, nous expliquerons tout d'abord notre modèle mathématiques puis nous expliquerons comment nous avons appliqué ce modèle à nos données.
 %grandeur concernant la biodiversité du système.
+
 
 \subsection{Analogie avec la thermodynamique}
 
@@ -38,7 +40,35 @@ On notera également que plus l'entropie du système est grande, plus le travail
 
 \subsubsection{Modèle basé sur la théorie des jeux}
 
+Voici les coûts pour l'attaquant pour attaquer respectivement une version donnée et toutes les versions du logiciel présentes sur les différentes machines du système ~:
+
+\[
+	C_{version} = \sum_{vulnerabiltes} C_{vulnerabilite}
+\]
+
+La façon dont les données sur les vulnérabilités ont été extraites est expliquée à la section \ref{sec:recupData}.  $C_{vulnerabilte}$ représente le coût d'exploitation de chaque vulnérabilité, que ce soit par l'achat d'un exploit ou sa conception.
+ 
+\[
+	C_{total} = \sum_{versions} C_{version} - k *\sum_{i,j,i \neq j} C_{vulnerabilitesCommunes}
+\]
+
+
+
+
 \subsubsection{Modèle basé sur des équations différentielles}
+
+Voici les coûts pour l'attaquant pour attaquer respectivement une version donnée et toutes les versions du logiciel présentes sur les différentes machines du système ~:
+
+\[
+	C_{version} = k*e^{- \lambda t}
+\]
+
+\[
+	C_{total} = U * M_{c} * V_{couts}
+\]
+
+Avec U le vecteur unitaire, $M_c$ la matrice de corrélation des failles entre les différentes versions d'un système et $V_{couts}$ le vecteur des coûts de l'attaque pour les différentes versions du système.
+On considère que le coût pour attaquer une version d'un système décroit exponentiellement au cours du temps (de nouvelles failles sont découvertes et de nouveaux exploits sont publiés). Le coût total pour attaquer toutes les versions présentes sur le système n'est pas exactement la somme des coûts d'attaque de chaque version, car certaines failles sont présentes dans plusieurs versions : cette différence est prise en compte grâce à $M_c$ , la matrice de corrélation.
 
 
 \subsection{Application du modèle}\label{sec:simulation}
@@ -46,7 +76,7 @@ Dans cette section, nous expliquons comment nous avons appliqué notre modèle m
 Nous avons dans un premier temps récupérer les données des différentes versions de serveur Web utilisés par les communes françaises ainsi que des vulnérabilités associées.
 Finalement nous avons recoupé les différentes information et effectué le calcul mathématiques.
 
-\subsubsection{Récupération des données}
+\subsubsection{Récupération des données}\label{sec:recupData}
 Pour faire une études comparative, nous avons récupéré un jeu de donnée sur les serveurs web utilisés par les communes françaises datant de mars 2015.
 Par la suite, nous avons généré un jeu de donnée à partir du même script afin de connaître l'état actuel des systèmes.
 Finalement nous avons récupéré les différentes failles de sécurité connu pour les différentes version de ces logiciels.

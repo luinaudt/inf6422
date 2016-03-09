@@ -2,7 +2,7 @@
 Afin de réaliser notre analyse, nous avons procédé en deux étapes.
 Tout d'abord nous avons défini un modèle mathématique permettant d'estimer le coût d'une attaque et de la défense.
 Puis nous avons appliqué notre modèle en analysant des jeux de données.
-Dans cette section, nous expliquerons tout d'abord notre modèle mathématiques puis nous expliquerons comment nous avons appliqué ce modèle à nos données.
+Dans cette section, nous expliquerons tout d'abord notre modèle mathématique puis nous expliquerons comment nous avons appliqué ce modèle à nos données.
 %grandeur concernant la biodiversité du système.
 
 
@@ -24,7 +24,7 @@ S_{creation} = \Delta S_{syst} + \Delta S_{ext} \geq 0
 \]
 
 Cela se caractérise dans notre cas par un principe simple~: tout changement de configuration dans notre système, quel qu'il soit, crée de l'entropie et donc augmente, au moins temporairement, la difficulté de l'attaque.
-Dans le cas ou l'entropie de notre système diminuerai, il y a tout de même une augmentation de l'entropie du côté de l'attaquant. Cela s'explique par le fait que l'état du nouveau système lui est inconnu. Il doit à nouveau refaire toute son analyse avant d'effectuer une nouvelle attaque. On notera également que sans action spécifique du défenseur, en laissant les administrateurs des sous-systèmes faire les mises à jour indépendamment, l'entropie du système global va augmenter de manière naturelle au cours du temps. 
+Dans le cas ou l'entropie de notre système diminuerait, il y a tout de même une augmentation de l'entropie du côté de l'attaquant. Cela s'explique par le fait que l'état du nouveau système lui est inconnu. Il doit à nouveau refaire toute son analyse avant d'effectuer une nouvelle attaque. On notera également que sans action spécifique du défenseur, en laissant les administrateurs des sous-systèmes faire les mises à jour indépendamment, l'entropie du système global va augmenter de manière naturelle au cours du temps. 
 
 Le second principe peut également s'écrire :
 
@@ -34,7 +34,7 @@ Le second principe peut également s'écrire :
 
 À quoi correspondent toutes ces grandeurs physiques dans notre système ? On va associer Q à l'effort fourni pour effectuer des mises à jours (Si Q est nul, il n'y a pas d'entropie créée), et W sera le travail fourni par l'attaquant pour effectuer son attaque. Du côté du défenseur, Q va en réalité être négatif. En effet, on va associer l'énergie du système à la quantité d'attaques subies. On veut donc en permanence le "refroidir".
 De même, la température T va être associée à la vulnérabilité des versions des logiciels du système. Plus les versions sont anciennes, plus elles seront vulnérables et donc la température va augmenter en fonction du temps.
-On notera également que plus l'entropie du système est grande, plus le travail à fournir par l'attaquant sera important.
+On notera également que plus l'entropie du système est grande, plus le travail à fournir par l'attaquant sera importante.
 
 \subsection{Modèle mathématique}\label{sec:modelMath}
 
@@ -73,34 +73,34 @@ On considère que le coût pour attaquer une version d'un système décroit expo
 
 \subsection{Application du modèle}\label{sec:simulation}
 Dans cette section, nous expliquons comment nous avons appliqué notre modèle mathématiques.
-Nous avons dans un premier temps récupérer les données des différentes versions de serveur Web utilisés par les communes françaises ainsi que des vulnérabilités associées.
-Finalement nous avons recoupé les différentes information et effectué le calcul mathématiques.
+Nous avons dans un premier temps récupérer les données des différentes versions de serveur Web utilisées par les communes françaises ainsi que des vulnérabilités associées.
+Finalement nous avons recoupé les différentes informations et effectué les calculs mathématiques.
 
 \subsubsection{Récupération des données}\label{sec:recupData}
-Pour faire une études comparative, nous avons récupéré un jeu de donnée sur les serveurs web utilisés par les communes françaises datant de mars 2015.
-Par la suite, nous avons généré un jeu de donnée à partir du même script afin de connaître l'état actuel des systèmes.
+Pour faire une études comparative, nous avons récupéré un jeu de données sur les serveurs web utilisés par les communes françaises datant de mars 2015.
+Par la suite, nous avons généré un jeu de données à partir du même script afin de connaître l'état actuel des systèmes.
 Finalement nous avons récupéré les différentes failles de sécurité connu pour les différentes version de ces logiciels.
 
-Les différentes failles de sécurité ont été récupéré depuis la base de donnée de vulnérabilité du gouvernement américain~\cite{vulnDatabase} qui contient des vulnérabilités recensés depuis 2002.
-Les informations que nous avons récupéré nous permettent pour chaque vulnérabilité de savoir le logiciel et les différentes version qui y sont sensibles.
+Les différentes failles de sécurité ont été récupéré depuis la base de données de vulnérabilités du gouvernement américain~\cite{vulnDatabase} qui contient des vulnérabilités recensés depuis 2002.
+Les informations que nous avons récupéré nous permettent pour chaque vulnérabilité de savoir le logiciel et les différentes versions qui y sont sensibles.
 
 
 Une fois les données trouvée, nous avons réalisé un recoupement des données.
-Pour cela, nous avons considéré que les versions de logiciel donnés par les serveurs sont les versions réellement utilisés et également que les serveur n'envoyant pas d'informations sont sécurisé de base.
+Pour cela, nous avons considéré que les versions de logiciel donnés par les serveurs sont les versions réellement utilisées et également que les serveurs n'envoyant pas d'informations sont sécurisés de base.
 
 
 \subsubsection{Application du modèle mathématique}
 Notre modèle mathématique prend en compte d'une part la variabilité des différents systèmes dans l'environnement ainsi que les mises à jours.
-En effet, nous avons précédemment expliqué qu'une mise à jours amenait un travail supplémentaire à fournir par l'attaquant.
-Nous appliquons donc simulation, une où l'on considère la complexité de l'attaque liée à l'hétérogénéité du système et une où l'on considère l'impact des mises à jours sur l'entropie.
+En effet, nous avons précédemment expliqué qu'une mise à jour amenait un travail supplémentaire à fournir par l'attaquant.
+Nous appliquons donc des simulations, une où l'on considère la complexité de l'attaque liée à l'hétérogénéité du système et une où l'on considère l'impact des mises à jour sur l'entropie.
 
 \paragraph{L'impact de l'hétérogénéité du système}
-Le fait d'avoir un système hétérogène amène à une augmentation du nombre total de vulnérabilité.
-Cependant cette diversité peut rend une attaque global plus complexe vue que chacun des systèmes sera sensible à des attaques différentes.
+Le fait d'avoir un système hétérogène amène à une augmentation du nombre total de vulnérabilités.
+Cependant cette diversité peut rendre une attaque globale plus complexe vue que chacun des systèmes sera sensible à des attaques différentes.
 La figure~\ref{fig:heteImpactVuln} exprime cette notion de non concordance entre les vulnérabilités et leur version.
 Dans cette figure, les nœuds "Ln" représentent une version de logiciel et les noeuds "Vn" représentent un numéro de vulnérabilité.
-Nous voyons que certaine version n'ont aucune vulnérabilité communes avec d'autre tel que "L4" avec et "L5".
-Dans ce cas, il est plus compliqué d'attaquer les deux système simultanément.
+Nous voyons que certaines versions n'ont aucune vulnérabilité commune avec d'autre tel que "L4" avec et "L5".
+Dans ce cas, il est plus compliqué d'attaquer les deux systèmes simultanément.
 Cependant, si nous prenons le cas de "L1" et "L2", ils sont tout deux sensibles à "V1" et "V2".
 Dans ce cas, la diversité amène une augmentation du risque d'attaques.
 
@@ -154,18 +154,18 @@ Dans ce cas, la diversité amène une augmentation du risque d'attaques.
 \label{fig:heteImpactVuln}
 \end{figure}
 
-Pour analysé cette impact, nous considérons deux éléments, le nombre total $T$ de vulnérabilités du système ainsi que le nombre minimum $M$ de vulnérabilité nécessaires pour contaminé entièrement le système.
+Pour analyser cette impact, nous considérons deux éléments, le nombre total $T$ de vulnérabilités du système ainsi que le nombre minimum $M$ de vulnérabilités nécessaires pour contaminer entièrement le système.
 $T$ permet d'estimer la probabilité qu'un attaquant possède un exploit, plus ce nombre est élevé et plus la probabilité est grande.
-$M$ permet d'estimer la complexité pour l'attaquant si il veut attaquer tout les ordinateur du système.
+$M$ permet d'estimer la complexité pour l'attaquant s'il veut attaquer tout les ordinateurs du système.
 Plus ce nombre est élevé, plus la difficulté est importante.
 
 \paragraph{L'impact des mises à jours}
 Dans le paragraphe précédent, nous avons expliqué l'intérêt qu'il y a à la diversité des versions.
 Toutefois, nous n'avons pas pris en compte l'ancienneté d'une vulnérabilité. 
-L'ancienneté d'une vulnérabilité la rend plus facilement exploitable car plus connu.
+L'ancienneté d'une vulnérabilité la rend plus facilement exploitable car plus connue.
 De plus, comme expliqué dans la section~\ref{sec:modelMath}, le fait de faire des mises à jours forcera l'attaquant à augmenter l'effort pour être capable de s'adapter à ce changement.
 
 Pour évaluer l'impact de l'ancienneté d'une version, nous ajoutons une majoration à la probabilité que l'attaquant possède une vulnérabilité.
-En effet il est peu probable qu'un attaquant possède un exploit pour une vulnérabilité récente alors qu'il est bien plus facile pour lui d'en obtenir un pour une ancienne vulnérabilité.
-Finalement, nous sommes capable d'estimer l'effort nécessaire pour un attaquant pour déterminer les différentes versions de logiciel utilisés lors d'une mise à jours.
+En effet, il est peu probable qu'un attaquant possède un exploit pour une vulnérabilité récente alors qu'il est bien plus facile pour lui d'en obtenir un pour une ancienne vulnérabilité.
+Finalement, nous sommes capable d'estimer l'effort nécessaire pour un attaquant pour déterminer les différentes versions de logiciel utilisées lors d'une mise à jour.
 

@@ -50,10 +50,10 @@ On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n vers
 H_{un} = -\sum_n \frac{1}{n} * \log(\frac{1}{n}) = \sum_n \frac{\log(n)}{n} = \log(n)
 \]
 
-Il reste à établir la formule reliant l'entropie et la diffusion de l'infection. Dans un premier temps, nous allons établir le mode le plus simple possible : un modèle linéaire en H. En cas d'infection, on considère que k machines sont touchées en moyenne, avec 
+Il reste à établir la formule reliant l'entropie et la diffusion de l'infection. Dans un premier temps, nous allons établir le mode le plus simple possible : un modèle linéaire en H. En cas d'infection, on considère que k machines sont touchées en moyenne, sur un total de m. On a alors :
 
 \[
-k=n*(1-\frac{H}{H_{un}}) = 1+(n-1)*(1-\frac{1}{\log(n)}*H)
+k=1+(m-1)*(1-\frac{H}{H_{un}}) =m-\frac{m-1}{\log(n)}*H
 \]
 
 Ce premier modèle est cohérent en $H=0$, puisqu'on est alors en présence d'un système avec une unique version du logiciel. En cas d'infection, $k=n$ : toutes les machines sont touchées puisqu'il n'y a pas de diversité logicielle (le \textit{malware} peut se propager partout).\\
@@ -62,7 +62,7 @@ La formule finale est donc :
 
 
 \[
-N_{infection}=[1-\exp^{-\lambda_1*T}] * [1+(n-1)*(1-\frac{1}{\log(n)}*H)]
+N_{infection}=[1-\exp^{-\lambda_1*T}] * [m-\frac{m-1}{\log(n)}*H]
 \]
 
 On peut remarquer que d'après notre modèle, la meilleure façon de ne pas se faire affecter est d'installer la même dernière version du logiciel sur toutes les machines, ou encore afin de ne pas propager l'infection dans le système, d'installer des versions différentes sur chaque machine. Cela parait assez intuitif, et on peut se dire au premier abord qu'il suffit donc de se placer dans l'une ou l'autre de ces situations. Cependant, il ne faut pas oublier qu'en pratique, il est presque impossible dans un système de taille importante et en production de maintenir en permanence les logiciels à jour. De plus cela implique des coûts importants. De même, une trop grande diversité des logiciels implique un coût de maintenance très important, et implique un "vieillissement" du système (selon la définition de $T$), et donc une probabilité d'infection initiale plus élevée. Il est donc important de développer les calculs pour des états intermédiaires afin de trouver un bon compromis.

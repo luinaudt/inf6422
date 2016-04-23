@@ -22,7 +22,7 @@ On pose également $T$ comme l'ancienneté moyenne des logiciels de notre systè
 T=\sum_E p_i T_i
 \]
 
-On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. En effet, on fait ici l'hypothèse simplificatrice qu'un \textit{malware} ne peut cibler qu'un unique  logiciel. Ainsi, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel sont anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
+On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. Comme un \textit{malware} ne peut cibler qu'un unique  logiciel, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel sont anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
 
 \[
 N_{infection} = f(H,T) = P_{attaque}(T)*D(H)
@@ -34,7 +34,7 @@ En ce qui concerne la probabilité de l'infection initiale, nous considérerons 
 P_{attaque}(T) =1- \exp^{-\lambda*T}
 \]
 
-Si $T=0$, le logiciel vient de sortir. On considère que toutes les failles connues y ont été corrigées, et que de nouvelles failles \textit{zero day} n'y ont pas encore été découvertes. La probabilité d'infection est donc nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté du logiciel.\\
+Si $T=0$, le logiciel vient de sortir. Comme toutes les failles connues sont corrigées, et qu'il n'y a pas de failles \textit{zero day}, la probabilité d'infection est nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté du logiciel.\\
 
 On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n logiciels différentes (chaque ordinateur a un logiciel différent) :
 

@@ -1,0 +1,27 @@
+Nous avons proposé dans cet article un modèle sur le taux d'infection en fonction de la diversité logicielle. Ce modèle bien
+qu'intéressant comporte malheureusement quelques points où une recherche ultérieure serait souhaitable. En premier lieu nous avons
+considéré qu'un attaquant serait plus apte à maximiser le nombre d'infections plutôt que la probabilité d'infecter une machine.
+Cette hypothèse est raisonnable dans de nombreuses situations mais elle peu sembler inappropriée dans certains cas. En effet, si
+cherche à récupérer des informations confidentielles mais a priori présentes sur un grand nombre d'ordinateurs au sein d'une
+compagnie il sera alors plus intéressant pour lui de maximiser la probabilité et nom le nombre de victimes.
+\newline
+
+Un autre point important pour une future amélioration de nos résultats est la détermination de constantes. Nous avons présenté un
+modèle de coût, qui s'il venait à être abouti aurait de nombreuses applications. En particulier, il permettrait de chiffrer un
+coût lors d'un audit et donc de donner des métriques tangibles, lesquelles pourraient servir de base pour déterminer un plan
+d'action. Malheureusement, une telle recherche nécessiterait des compétences économiques pour évaluer un coût mais aussi un
+savoir-faire technique pour jauger la dangerosité d'un système.
+\newline
+
+De plus, nous basons nos équations sur une constante $\lambda$ qui faudrait déterminer afin d'obtenir des résultats numériques. Une
+études de champs serait don souhaitable pour approximer le $\lambda$ moyen d'une attaque. On pourrait également déterminer un
+$\lambda$ pour différents types d'attaques auxquels on pense être confronté.
+\newline
+
+Par ailleurs, nos résultats se basent sur l'hypothèse qu'un malware ne peut exploiter qu'une vulnérabilité et qu'une vulnérabilité
+ne peut affecter deux logiciels distincts. Ces deux hypothèses sont bien sûr réductrices et fausses. Un travail supplémentaire est
+donc nécessaire pour déterminer si ces hypothèses sont source d'un biais trop grand. Si c'est le cas, il faudrait également
+travailler sur un modèle qui prendrait les prendrait en compte.
+
+Enfin, d'une manière générale, il serait souhaitable de confronter nos résultats à la réalité via une étude de mesures issues de
+données réelles. Il est nécessaire de vérifier les résultats des simulations en les comparant à des données réelles. 

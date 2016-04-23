@@ -25,7 +25,7 @@ T=\sum_E p_i T_i
 On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. En effet, on fait ici l'hypothèse simplificatrice qu'un \textit{malware} ne peut cibler qu'une unique version d'un logiciel. Ainsi, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions d'un logiciel sont anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
 
 \[
-N_{infection} = f(H,T)
+N_{infection} = f(H,T) = P_{attaque}(T)*D(H)
 \]
 
 En ce qui concerne la probabilité de l'infection initiale, nous considérerons par la suite qu'elle croit exponentiellement avec l'ancienneté moyenne de notre système. Nous la définissons donc comme suit :
@@ -57,4 +57,52 @@ La formule finale est donc :
 N_{infection}=[1-\exp^{-\lambda_1*T}] * [m-\frac{m-1}{\log(n)}*H]
 \]
 
-On peut remarquer que d'après notre modèle, la meilleure façon de ne pas se faire affecter est d'installer la même dernière version du logiciel sur toutes les machines, ou encore afin de ne pas propager l'infection dans le système, d'installer des versions différentes sur chaque machine. Cela parait assez intuitif, et on peut se dire au premier abord qu'il suffit donc de se placer dans l'une ou l'autre de ces situations. Cependant, il ne faut pas oublier qu'en pratique, il est presque impossible dans un système de taille importante et en production de maintenir en permanence les logiciels à jour. De plus cela implique des coûts importants. De même, une trop grande diversité des logiciels implique un coût de maintenance très important, et implique un "vieillissement" du système (selon la définition de $T$), et donc une probabilité d'infection initiale plus élevée. Il est donc important de développer les calculs pour des états intermédiaires afin de trouver un bon compromis.
+On peut remarquer que d'après notre modèle, la meilleure façon de ne pas se faire affecter est d'installer la même dernière version du logiciel sur toutes les machines, ou encore afin de ne pas propager l'infection dans le système, d'installer des versions différentes sur chaque machine. Cela parait assez intuitif, et on peut se dire au premier abord qu'il suffit donc de se placer dans l'une ou l'autre de ces situations. Cependant, il ne faut pas oublier qu'en pratique, il est presque impossible dans un système de taille importante et en production de maintenir en permanence les logiciels à jour. De plus cela implique des coûts importants. De même, une trop grande diversité des logiciels implique un coût de maintenance élevé, puisqu'il faut préparer des procédures de mise à jour différentes pour chacun d'entre eux.
+Ainsi, afin de rendre notre modèle plus réaliste, nous allons y introduire ces coûts. Il ne suffira plus alors de minimiser le taux de pénétration du \textit{malware} dans notre système, mais plutôt ce taux \textbf{plus} le coût correspondant à la maintenance du système.
+
+Nous posons donc $C_T$ le coût de maintenance par unité de temps selon l'ancienneté moyenne des logiciels que l'on vise à avoir :
+
+\[
+C_T=m*\frac{1}{T}
+\]
+
+Ce coût est linéaire en $\frac{1}{T}$, puisque si nous voulons avoir une ancienneté moyenne des versions deux fois plus petite, il faudra logiquement effectuer les mises à jour deux fois plus régulièrement.
+
+Nous posons également $C_H$ le coût de maintenance par unité de temps qui sera lui fonction de l'entropie de notre système et du nombre de versions de logiciels qui y sont installées :
+
+\[
+C_H = g(n,H)
+\]
+
+$C_H$ dépend du nombre de versions de logiciels dans notre système, comme expliqué précédemment, mais il dépend également de l'entropie, car si il y a uniquement une machine équipée d'une version donnée d'un logiciel, alors il suffira d'y faire une mise à jour manuelle, alors que si cette version est plus répandue, il faudra alors préparer une procédure de mise à jour automatique. Cependant,cette fonction de coût est très difficile à définir, et dépendra fortement des procédures en place dans chaque département IT. C'est pourquoi nous ne donnons pas sa forme.
+
+Nous pouvons alors poser le coût total pour le défenseur:
+
+\[
+C_{Total}=k_1*N_{infection}+k_2*C_T+k_3*C_H
+\]
+
+Les coefficients $k_1$, $k_2$ et $k_3$ sont à définir par l'administrateur du système afin que les résultats collent à ses exigences spécifiques en terme de diffusion du \textit{malware} par rapport à ses propres coûts de maintenance informatique.
+
+\begin{figure}[ht]
+\centering
+     \includegraphics[width=1.0\linewidth]{Paul/Matlab/3D.jpg}
+     \caption{Modélisation avec Matlab}
+     \label{normal_case}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+     \includegraphics[width=1.0\linewidth]{Paul/Matlab/3D_proj.jpg}
+     \caption{Projection de la modélisation avec Matlab}
+     \label{normal_case}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+     \includegraphics[width=1.0\linewidth]{Paul/Matlab/lambda_var.png}
+     \caption{Impact de la variation de lambda (gauche=1, droite=0.05)}
+     \label{normal_case}
+\end{figure}
+
+%Thomas : Tu peux faire la discussion des figures ici

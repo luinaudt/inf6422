@@ -1,71 +1,6 @@
 
-Afin de réaliser notre analyse, nous avons procédé en deux étapes.
-Tout d'abord nous avons défini un modèle mathématique permettant d'estimer le coût d'une attaque et de la défense.
-Puis nous avons appliqué notre modèle en analysant des jeux de données.
-Dans cette section, nous expliquerons tout d'abord notre modèle mathématique puis nous expliquerons comment nous avons appliqué ce modèle à nos données..
 
 
-
-\subsection{Modèle mathématique}\label{sec:modelMath}
-
-Notre objectif est de déterminer le nombre moyen de machines infectées lors d'une attaque, en fonction de la configuration logicielle du système. En effet, on peut considérer que dans un système à grande échelle, avec un certain degré de redondance, une attaque n'est concluante que si un certain pourcentage des machines a été infecté. Il peut donc être plus intéressant d'optimiser le nombre moyen de machines infectées par attaque plutôt que la probabilité d'infection (c'est à dire préférer une probabilité d'infection plus importante, mais avec un faible nombre de machines infectées à chaque attaque plutôt qu'une probabilité d'infection plus faible, mais où une très grande partie du système serait affecté en cas d'attaque).\\
-Pour cela, nous allons définir "l'entropie" du système. Cette grandeur vient à l'origine de la thermodynamique et caractérise le "désordre" d'un système. Claude Shannon a eu l'idée de transposer cette grandeur au domaine de la théorie de l'information\cite{entropie_shannon}.\\
-Dans notre cas, nous allons reprendre sa formulation, et allons définir l'entropie de notre système comme son degré d'hétérogénéité, c'est à dire la variété des versions des logiciels qui y sont installés.
-Pour cela, définissons $E_v$ comme l'ensemble des logiciels et de leurs différentes versions installés sur notre système de $n$ machines. Pour chaque élément de l'ensemble, posons $p_i$ la probabilité que cette version d'un logiciel se retrouve installé sur l'une des machines. Pour des raisons de simplification, on fait l'hypothèse qu'un seul élément de $E$ se trouve installé sur chaque machine ( On travaille sur une catégorie précise de logiciel, par exemple un serveur HTTP).\\
-On a donc:
-
-\[
-\sum_{E}p_i=1
-\]
-
-On pose alors H l'entropie de Shannon :
-
-\[
-H=-\sum_E p_i \log(p_i)
-\]
-
-On pose également $T$ comme l'ancienneté moyenne des versions des logiciels de notre système, chaque version ayant une ancienneté $T_i$ (on définit l'ancienneté d'une version comme le temps écoulé depuis sa publication)  :
-
-\[
-T=\sum_E p_i T_i
-\]
-
-On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. En effet, on fait ici l'hypothèse simplificatrice qu'un \textit{malware} ne peut cibler qu'une unique version d'un logiciel. Ainsi, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions d'un logiciel sont anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
-
-\[
-N_{infection} = f(H,T)
-\]
-
-En ce qui concerne la probabilité de l'infection initiale, nous considérerons par la suite qu'elle croit exponentiellement avec l'ancienneté moyenne de notre système. Nous la définissons donc comme suit :
-
-\[
-P_{attaque}(T) =1- \exp^{-\lambda*T}
-\]
-
-Si $T=0$, la version vient de sortir. On considère que toutes les failles connues y ont été corrigées, et que de nouvelles failles \textit{zero day} n'y ont pas encore été découvertes. La probabilité d'infection est donc nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté de la version.\\
-
-On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n versions différentes (chaque ordinateur à une version différente du logiciel) :
-
-\[
-H_{un} = -\sum_n \frac{1}{n} * \log(\frac{1}{n}) = \sum_n \frac{\log(n)}{n} = \log(n)
-\]
-
-Il reste à établir la formule reliant l'entropie et la diffusion de l'infection. Dans un premier temps, nous allons établir le mode le plus simple possible : un modèle linéaire en H. En cas d'infection, on considère que k machines sont touchées en moyenne, sur un total de m. On a alors :
-
-\[
-k=1+(m-1)*(1-\frac{H}{H_{un}}) =m-\frac{m-1}{\log(n)}*H
-\]
-
-Ce premier modèle est cohérent en $H=0$, puisqu'on est alors en présence d'un système avec une unique version du logiciel. En cas d'infection, $k=n$ : toutes les machines sont touchées puisqu'il n'y a pas de diversité logicielle (le \textit{malware} peut se propager partout).\\
-Il est aussi cohérent pour $H=H_{un}$. En effet, chaque machine a alors une version différente, et alors $k=1$ : seulement la première machine est infectée, le \textit{malware} n'arrive pas du tout à se propager.\\
-La formule finale est donc :
-
-
-\[
-N_{infection}=[1-\exp^{-\lambda_1*T}] * [m-\frac{m-1}{\log(n)}*H]
-\]
-
-On peut remarquer que d'après notre modèle, la meilleure façon de ne pas se faire affecter est d'installer la même dernière version du logiciel sur toutes les machines, ou encore afin de ne pas propager l'infection dans le système, d'installer des versions différentes sur chaque machine. Cela parait assez intuitif, et on peut se dire au premier abord qu'il suffit donc de se placer dans l'une ou l'autre de ces situations. Cependant, il ne faut pas oublier qu'en pratique, il est presque impossible dans un système de taille importante et en production de maintenir en permanence les logiciels à jour. De plus cela implique des coûts importants. De même, une trop grande diversité des logiciels implique un coût de maintenance très important, et implique un "vieillissement" du système (selon la définition de $T$), et donc une probabilité d'infection initiale plus élevée. Il est donc important de développer les calculs pour des états intermédiaires afin de trouver un bon compromis.
 
 \subsection{Application du modèle}\label{sec:simulation}
 Dans cette section, nous expliquons comment nous avons appliqué notre modèle mathématiques.
@@ -164,4 +99,3 @@ De plus, comme expliqué dans la section~\ref{sec:modelMath}, le fait de faire d
 Pour évaluer l'impact de l'ancienneté d'une version, nous ajoutons une majoration à la probabilité que l'attaquant possède une vulnérabilité.
 En effet, il est peu probable qu'un attaquant possède un exploit pour une vulnérabilité récente alors qu'il est bien plus facile pour lui d'en obtenir un pour une ancienne vulnérabilité.
 Finalement, nous sommes capable d'estimer l'effort nécessaire pour un attaquant pour déterminer les différentes versions de logiciel utilisées lors d'une mise à jour.
-

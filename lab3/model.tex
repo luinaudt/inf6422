@@ -22,7 +22,7 @@ On pose également $T$ comme l'ancienneté moyenne des logiciels de notre systè
 T=\sum_E p_i T_i
 \]
 
-On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. Comme un \textit{malware} ne peut cibler qu'un unique  logiciel, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel sont anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
+On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. Comme un \textit{malware} ne peut cibler qu'un unique logiciel, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel seront anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
 
 \[
 N_{infection} = f(H,T) = P_{attaque}(T)*D(H)
@@ -84,25 +84,27 @@ C_{Total}=k_1*N_{infection}+k_2*C_T+k_3*C_H
 
 Les coefficients $k_1$, $k_2$ et $k_3$ sont à définir par l'administrateur du système afin que les résultats collent à ses exigences spécifiques en terme de diffusion du \textit{malware} par rapport à ses propres coûts de maintenance informatique.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
      \includegraphics[width=1.0\linewidth]{Paul/Matlab/3D.jpg}
      \caption{Modélisation avec Matlab}
-     \label{normal_case}
+     \label{matlab}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \centering
      \includegraphics[width=1.0\linewidth]{Paul/Matlab/3D_proj.jpg}
      \caption{Projection de la modélisation avec Matlab}
-     \label{normal_case}
+     \label{matlab_proj}
 \end{figure}
 
-\begin{figure}[ht]
+Sur les figures \ref{matlab} et \ref{matlab_proj}, on observe une simulation de notre modèle sous Matlab. Les paramètres ont été choisis de façon arbitraire, et donc les valeurs numériques ne sont pas significatives. Cependant, on observe dans le cas présenté un minimum local, qui correspond au compromis idéal entre coût lié à  l'ancienneté moyenne des versions et à leur entropie et coût lié à la diffusion dún \textit{malware}. Cela confirme donc qu'un défenseur pourra se servir de ce modèle pour, connaissant les paramètres propres à son système, agir de façon adéquate sur sa diversité logicielle.
+
+\begin{figure}[!ht]
 \centering
      \includegraphics[width=1.0\linewidth]{Paul/Matlab/lambda_var.png}
      \caption{Impact de la variation de lambda (gauche=1, droite=0.05)}
-     \label{normal_case}
+     \label{lambda}
 \end{figure}
 
-%Thomas : Tu peux faire la discussion des figures ici
+Sur la figure \ref{lambda}, on observe l'influence de la vitesse de découverte des vulnérabilités $\lambda$. On y voit que, peu importe $\lambda$ (le seul paramètre sur lequel peut influence l'attaquant en accentuant sa recherche de vulnérabilités), le défenseur gagne à augmenter l'entropie de son système. C'est là la grande force de ce moyen de défense : l'attaquant n'a pas vraiment de moyen de le contourner.

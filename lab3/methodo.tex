@@ -7,17 +7,17 @@ Puis dans une deuxième partie, nous discuterons des capacités que possède aus
 Finalement nous poserons les objectifs de chacune des parties.
 
 \subsubsection{Environnement}\label{sec:hypothese:env}
-Dans le cadre de cette étude, nous considérons un environnement $E$ composé de $m$ machines utilisant une même application.
+Dans le cadre de cette étude, pour réaliser un modèle réalisable, nous avons fait des hypothèses simplificatrices. Nous considérons un environnement $E$ composé de $m$ machines utilisant une même application.
 Une application représente la fonctionnalité d'un logiciel.
-Il y a jusqu'à $n$ logiciel pour une application donnée.
+Il y a jusqu'à $n$ logiciel(s) pour une application donnée.
 Pour chacun de ces logiciels, nous considérons que le nombre de vulnérabilités augmente avec le temps.
 Nous posons également comme hypothèse qu'il n'y a pas de vulnérabilité zero-day exploitable.
 Finalement, aucun des logiciels ne possède de vulnérabilité commune.
 
 
 \subsubsection{Capacité des parties}\label{sec:hypothese:capacite}
-Dans le cadre de cette étude et afin de pouvoir étudier l'impact de l'hétérogénéité,  nous considérons que le défenseur ne possède pas de système de protection contre les logiciels malveillant.
-Cependant nous supposons qu'il est capable de déployer une mise à jours d'un logiciel sur toutes les machines du système en même temps.
+Dans le cadre de cette étude et afin de pouvoir étudier l'impact de l'hétérogénéité,  nous considérons que le défenseur ne possède pas de système de protection contre les logiciels malveillants.
+Cependant nous supposons qu'il est capable de déployer une mise à jour d'un logiciel sur toutes les machines du système en même temps.
 
 Pour l'attaquant, nous supposons qu'il possède uniquement un malware et que celui-ci n'exploite qu'une seule vulnérabilité.
 Le malware ne peut donc cibler qu'un seul logiciel.
@@ -25,7 +25,7 @@ Cela nous permet de montrer l'impact maximal sur le système.
 
 
 \subsubsection{Les objectifs des parties}\label{sec:hypothese:objectifs}
-Pour pouvoir étudier l'efficacité du système hétérogène, nous supposons que l'objectif de l'attaquant est de propager un malware et d'infecter le plus de machine possible.
+Pour pouvoir étudier l'efficacité du système hétérogène, nous supposons que l'objectif de l'attaquant est de propager un malware et d'infecter le plus de machines possibles.
 Pour le défenseur l'objectif est d'assurer que le système reste disponible.
 
 
@@ -80,18 +80,18 @@ Pour le défenseur l'objectif est d'assurer que le système reste disponible.
 
 %Pour analyser cette impact, nous considérons deux éléments, le nombre total $T$ de vulnérabilités du système ainsi que le nombre minimum $M$ de vulnérabilités nécessaires pour contaminer entièrement le système.
 %$T$ permet d'estimer la probabilité qu'un attaquant possède un exploit, plus ce nombre est élevé et plus la probabilité est grande.
-%$M$ permet d'estimer la complexité pour l'attaquant s'il veut attaquer tout les ordinateurs du système.
+%$M$ permet d'estimer la complexité pour l'attaquant s'il veut attaquer tous les ordinateurs du système.
 %Plus ce nombre est élevé, plus la difficulté est importante.
 %
 %\paragraph{L'impact des mises à jours}
-%Dans le paragraphe précédent, nous avons expliqué l'intérêt qu'il y a à la diversité des versions.
+%Dans le paragraphe précédent, nous avons expliqué l'intérêt de la diversité des versions.
 %Toutefois, nous n'avons pas pris en compte l'ancienneté d'une vulnérabilité. 
-%L'ancienneté d'une vulnérabilité la rend plus facilement exploitable car plus connue.
-%De plus, comme expliqué dans la section~\ref{sec:modelMath}, le fait de faire des mises à jours forcera l'attaquant à augmenter l'effort pour être capable de s'adapter à ce changement.
+%L'ancienneté d'une vulnérabilité la rend plus facilement exploitable car elle a une plus grande probabilité d'être connue.
+%De plus, comme expliqué dans la section~\ref{sec:modelMath}, le fait de faire des mises à jour forcera l'attaquant à augmenter l'effort pour être capable de s'adapter à ce changement.
 %
 %Pour évaluer l'impact de l'ancienneté d'une version, nous ajoutons une majoration à la probabilité que l'attaquant possède une vulnérabilité.
 %En effet, il est peu probable qu'un attaquant possède un exploit pour une vulnérabilité récente alors qu'il est bien plus facile pour lui d'en obtenir un pour une ancienne vulnérabilité.
-%Finalement, nous sommes capable d'estimer l'effort nécessaire pour un attaquant pour déterminer les différentes versions de logiciel utilisées lors d'une mise à jour.
+%Finalement, nous sommes capable d'estimer l'effort nécessaire pour un attaquant pour déterminer les différentes versions de logiciels utilisées lors d'une mise à jour.
 
 
 
@@ -108,11 +108,11 @@ Pour le défenseur l'objectif est d'assurer que le système reste disponible.
 
 \subsection{Analyse du nombre de vulnérabilités par logiciel}
 Nous avons extrait depuis la base de données de vulnérabilité du gouvernement américain NVD~\cite{vulnDatabase} le nombre de failles par logiciel.
-Cette base de donnée contient une liste des vulnérabilités connues.
-La figure~\ref{fig:vulPerLog} montre le nombre de vulnérabilité communes à au moins deux logiciels sur les 70285 vulnérabilités connues.
-Il est également nécessaire de considérer que certains logiciels ont des identifications différentes mais sont les même.
+Cette base de données contient une liste des vulnérabilités connues.
+La figure~\ref{fig:vulPerLog} montre le nombre de vulnérabilités communes à au moins deux logiciels sur les 70285 vulnérabilités connues.
+Il est également nécessaire de considérer que certains logiciels ont des identifications différentes mais sont les mêmes.
 Nous avons un total de 4,70\% de logiciels ayant des vulnérabilités communes donc 73\% concerne uniquement 2 logiciels.
-Nous pouvons donc considérer que notre hypothèse sur le fait qu'il n'y ait pas de vulnérabilités communes entre plusieurs logiciels est correcte.
+Nous pouvons considérer que notre hypothèse sur le fait qu'il n'y ait pas de vulnérabilités communes entre plusieurs logiciels est valide.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{data/commonVuln.png}

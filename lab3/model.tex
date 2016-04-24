@@ -28,7 +28,7 @@ On recherche alors le nombre moyen d'infections par attaque en fonction de l'ent
 N_{infection} = f(H,T) = P_{attaque}(T)*D(H)
 \]
 
-En ce qui concerne la probabilité de l'infection initiale, nous considérerons par la suite qu'elle croit exponentiellement avec l'ancienneté moyenne de notre système. Nous la définissons donc comme suit :
+En ce qui concerne la probabilité de l'infection initiale, nous considérerons par la suite qu'elle croît exponentiellement avec l'ancienneté moyenne de notre système. Nous la définissons donc comme suit :
 
 \[
 P_{attaque}(T) =1- \exp^{-\lambda*T}
@@ -36,7 +36,7 @@ P_{attaque}(T) =1- \exp^{-\lambda*T}
 
 Si $T=0$, le logiciel vient de sortir. Comme toutes les failles connues sont corrigées, et qu'il n'y a pas de failles \textit{zero day}, la probabilité d'infection est nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté du logiciel.\\
 
-On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n logiciels différentes (chaque ordinateur a un logiciel différent) :
+On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n logiciels différents (chaque ordinateur a un logiciel différent) :
 
 \[
 H_{un} = -\sum_n \frac{1}{n} * \log(\frac{1}{n}) = \sum_n \frac{\log(n)}{n} = \log(n)

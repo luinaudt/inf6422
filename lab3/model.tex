@@ -1,6 +1,6 @@
 \subsection{Modèle mathématique}\label{sec:modelMath}
 
-Notre objectif est de déterminer le nombre moyen de machines infectées lors d'une attaque, en fonction de la configuration logicielle du système. En effet, on peut considérer que dans un système à grande échelle, avec un certain degré de redondance, une attaque n'est concluante que si un certain pourcentage des machines a été infecté. Il peut donc être plus intéressant d'optimiser le nombre moyen de machines infectées par attaque plutôt que la probabilité d'infection (c'est à dire préférer une probabilité d'infection plus importante, mais avec un faible nombre de machines infectées à chaque attaque plutôt qu'une probabilité d'infection plus faible, mais où une très grande partie du système serait affecté en cas d'attaque).\\
+Notre objectif est de déterminer le nombre moyen de machines infectées lors d'une attaque, en fonction de la configuration logicielle du système. En effet, on peut considérer que dans un système à grande échelle, avec un certain degré de redondance, une attaque n'est concluante que si un certain pourcentage des machines a été infecté. Il peut donc être plus intéressant d'optimiser le nombre moyen de machines infectées par attaque plutôt que la probabilité d'infection (c'est à dire préférer une probabilité d'infection plus importante, mais avec un faible nombre de machines infectées à chaque attaque plutôt qu'une probabilité d'infection plus faible, mais où une très grande partie du système serait affectée en cas d'attaque).\\
 Pour cela, nous allons définir "l'entropie" du système. Cette grandeur vient à l'origine de la thermodynamique et caractérise le "désordre" d'un système. Claude Shannon a eu l'idée de transposer cette grandeur au domaine de la théorie de l'information\cite{entropie_shannon}.\\
 Dans notre cas, nous allons reprendre sa formulation, et allons définir l'entropie de notre système comme son degré d'hétérogénéité, c'est à dire la variété des logiciels qui y sont installés pour une application donnée.
 Pour cela, définissons $E_v$ comme l'ensemble des logiciels installés sur notre système de $n$ machines pour l'application fixée (e.g. un serveur web). Pour chaque élément de l'ensemble, posons $p_i$ la probabilité que ce logiciel se retrouve installé sur l'une des machines. 
@@ -34,9 +34,9 @@ En ce qui concerne la probabilité de l'infection initiale, nous considérerons 
 P_{attaque}(T) =1- \exp^{-\lambda*T}
 \]
 
-Si $T=0$, le logiciel vient de sortir. Comme toutes les failles connues sont corrigées, et qu'il n'y a pas de failles \textit{zero day}, la probabilité d'infection est nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté du logiciel.\\
+Si $T=0$, le logiciel vient de sortir. Comme toutes les failles connues sont corrigées, et qu'il n'y a pas de faille \textit{zero day}, la probabilité d'infection est nulle. Au contraire, plus $T$ augmente, plus le nombre de failles découvertes et leur diffusion augmentent, et la probabilité d'infection tend vers 1. $\lambda$ est un paramètre qui sert à ajuster la vitesse à laquelle la probabilité d'infection augmente avec l'ancienneté du logiciel.\\
 
-On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n logiciels différentes (chaque ordinateur a un logiciel différent) :
+On définit $H_{un}$ comme l'entropie pour une distribution uniforme avec n logiciels différents (chaque ordinateur a un logiciel différent) :
 
 \[
 H_{un} = -\sum_n \frac{1}{n} * \log(\frac{1}{n}) = \sum_n \frac{\log(n)}{n} = \log(n)
@@ -68,13 +68,13 @@ C_T=m*\frac{1}{T}
 
 Ce coût est linéaire en $\frac{1}{T}$, puisque si nous voulons avoir une ancienneté moyenne des logiciels deux fois plus petite, il faudra logiquement effectuer les mises à jour deux fois plus régulièrement.
 
-Nous posons également $C_H$ le coût de maintenance par unité de temps qui sera lui fonction de l'entropie de notre système et du nombre de logiciels qui y sont installées :
+Nous posons également $C_H$ le coût de maintenance par unité de temps qui sera lui fonction de l'entropie de notre système et du nombre de logiciels qui y sont installés :
 
 \[
 C_H = g(n,H)
 \]
 
-$C_H$ dépend du nombre de logiciels dans notre système, comme expliqué précédemment, mais il dépend également de l'entropie, car si il y a uniquement une machine équipée d'une version donnée d'un logiciel, alors il suffira d'y faire une mise à jour manuelle, alors que si cette version est plus répandue, il faudra alors préparer une procédure de mise à jour automatique. Cependant,cette fonction de coût est très difficile à définir, et dépendra fortement des procédures en place dans chaque département IT. C'est pourquoi nous ne donnons pas sa forme.
+$C_H$ dépend du nombre de logiciels dans notre système, comme expliqué précédemment, mais il dépend également de l'entropie. S'il y a uniquement une machine équipée d'une version donnée d'un logiciel, il suffira d'y faire une mise à jour manuelle, alors que si cette version est plus répandue, il faudra alors préparer une procédure de mise à jour automatique. Cependant,cette fonction de coût est très difficile à définir, et dépendra fortement des procédures en place dans chaque département IT. C'est pourquoi nous ne donnons pas sa forme.
 
 Nous pouvons alors poser le coût total pour le défenseur:
 
@@ -82,7 +82,7 @@ Nous pouvons alors poser le coût total pour le défenseur:
 C_{Total}=k_1*N_{infection}+k_2*C_T+k_3*C_H
 \]
 
-Les coefficients $k_1$, $k_2$ et $k_3$ sont à définir par l'administrateur du système afin que les résultats collent à ses exigences spécifiques en terme de diffusion du \textit{malware} par rapport à ses propres coûts de maintenance informatique.
+Les coefficients $k_1$, $k_2$ et $k_3$ sont à définir par l'administrateur du système afin que les résultats correspondent à ses exigences spécifiques en terme de diffusion du \textit{malware} par rapport à ses propres coûts de maintenance informatique.
 
 \begin{figure}[!ht]
 \centering
@@ -98,7 +98,7 @@ Les coefficients $k_1$, $k_2$ et $k_3$ sont à définir par l'administrateur du 
      \label{matlab_proj}
 \end{figure}
 
-Sur les figures \ref{matlab} et \ref{matlab_proj}, on observe une simulation de notre modèle sous Matlab. Les paramètres ont été choisis de façon arbitraire, et donc les valeurs numériques ne sont pas significatives. Cependant, on observe dans le cas présenté un minimum local, qui correspond au compromis idéal entre coût lié à  l'ancienneté moyenne des versions et à leur entropie et coût lié à la diffusion dún \textit{malware}. Cela confirme donc qu'un défenseur pourra se servir de ce modèle pour, connaissant les paramètres propres à son système, agir de façon adéquate sur sa diversité logicielle.
+Sur les figures \ref{matlab} et \ref{matlab_proj}, on observe une simulation de notre modèle sous Matlab. Les paramètres ont été choisis de façon arbitraire, les valeurs numériques ne sont pas donc significatives. Cependant, on observe, dans le cas présenté une corrélation entre l’ancienneté de la version et la probabilité d’infection. Nous pouvons aussi constater un minimum local, qui correspond au compromis idéal entre le coût lié à l'ancienneté moyenne des versions et à leur entropie et le coût lié à la diffusion d'un \textit{malware}. Cela confirme donc qu'un défenseur pourra se servir de ce modèle, connaissant les paramètres propres à son système, pour agir de façon adéquate sur sa diversité logicielle.
 
 \begin{figure}[!ht]
 \centering
@@ -107,4 +107,4 @@ Sur les figures \ref{matlab} et \ref{matlab_proj}, on observe une simulation de 
      \label{lambda}
 \end{figure}
 
-Sur la figure \ref{lambda}, on observe l'influence de la vitesse de découverte des vulnérabilités $\lambda$. On y voit que, peu importe $\lambda$ (le seul paramètre sur lequel peut influence l'attaquant en accentuant sa recherche de vulnérabilités), le défenseur gagne à augmenter l'entropie de son système. C'est là la grande force de ce moyen de défense : l'attaquant n'a pas vraiment de moyen de le contourner.
+Sur la figure \ref{lambda}, on observe l'influence de la vitesse de découverte des vulnérabilités $\lambda$. On y voit que, peu importe la valeur du paramètre $\lambda$ (le seul paramètre sur lequel peut influencer l'attaquant en accentuant sa recherche de vulnérabilités), le défenseur a tout intérêt à augmenter l'entropie de son système, et par conséquent la diversité de son système. Nous voyons ainsi l'un des atout principal de ce moyen de défense : l'attaquant n'a pas vraiment de moyen de l'influencer et de le contourner.

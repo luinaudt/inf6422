@@ -1,34 +1,32 @@
 Nous avons proposé dans cet article un modèle sur le taux d'infection en fonction de la diversité logicielle. Ce modèle bien
-qu'intéressant comporte malheureusement quelques points où une recherche ultérieure serait souhaitable. En premier lieu nous avons
+qu'intéressant comporte quelques limitations sur lesquelles une recherche ultérieure serait souhaitable. En premier lieu nous avons
 considéré qu'un attaquant serait plus apte à maximiser le nombre d'infections plutôt que la probabilité d'infecter une machine.
 Cette hypothèse est raisonnable dans de nombreuses situations mais elle peut sembler inappropriée dans certains cas. En effet, si
 l'attaquant
-cherche à récupérer des informations confidentielles mais a priori présentes sur un grand nombre d'ordinateurs au sein d'une
-compagnie, il sera alors plus intéressant pour lui de maximiser la probabilité et nom le nombre de victimes.
+cherche à récupérer des informations confidentielles mais a priori présentes sur un petit nombre d'ordinateurs au sein d'une
+compagnie, il sera alors plus intéressant pour lui de maximiser la probabilité d'infecter ces machines et non le nombre total de machines infectées.
 \newline
 
-Un autre point important pour une future amélioration de nos résultats est la détermination de constantes. Nous avons présenté un
-modèle de coût, qui s'il venait à être abouti aurait de nombreuses applications. En particulier, il permettrait de chiffrer un
-coût lors d'un audit et donc de donner des métriques tangibles, lesquelles pourraient servir de base pour déterminer un plan
-d'action. Malheureusement, une telle recherche nécessiterait des compétences économiques pour évaluer un coût mais aussi un
-savoir-faire technique pour jauger la dangerosité d'un système.
+Un autre point important pour compléter nos résultats est la détermination de constantes. Nous avons présenté un
+modèle de coût, qui étudier de manière plus approfondie pourrait avoir de nombreuses applications. En particulier, il permettrait de chiffrer un
+coût lors d'un audit et de donner des métriques tangibles qui pourraient servir de base pour déterminer un plan
+d'action. Une telle recherche nécessiterait des compétences économiques pour évaluer les différents coûts mais aussi un
+savoir-faire technique pour déterminer la dangerosité d'un système.
 \newline
 
-De plus, nous basons nos équations sur une constante $\lambda$ qui faudrait déterminer afin d'obtenir des résultats numériques. Une
-études de champs serait donc souhaitable pour approximer le $\lambda$ moyen d'une attaque. On pourrait également déterminer un
-$\lambda$ pour différents types d'attaques auxquels on pense être confronté.
+Nos équations se basent sur une constante $\lambda$ dont la valeur doit être déterminer afin d'obtenir des résultats numériques. Une
+études de champs est souhaitable pour approximer le $\lambda$ moyen d'une attaque. Il serait également intéressant de déterminer un
+$\lambda$ pour différents types d'attaques auxquels nous pouvons être confrontés.
 \newline
 
-Par ailleurs, nos résultats se basent sur l'hypothèse qu'un malware ne peut exploiter qu'une vulnérabilité et qu'une vulnérabilité
-ne peut affecter deux logiciels distincts. Ces deux hypothèses sont bien sûr réductrices et fausses. Un travail supplémentaire est
-donc nécessaire pour déterminer si ces hypothèses sont source d'un biais trop grand. Si c'est le cas, il faudrait également
-travailler sur un modèle qui prendrait les prendrait en compte.
+Nos résultats se basent sur l'hypothèse qu'un malware ne peut exploiter qu'une vulnérabilité et que cette vulnérabilité
+ne peut affecter deux logiciels distincts. Nous aurions pu prendre en compte plutôt une vulnérabilité qu’une version de logiciel comme cela a été fait par  Neti et al.\cite{softwareDiversity:Security}
+ Il serait intéressant de voir l'impact de ce hypothèse notre modèle.
 
-Enfin, d'une manière générale, il serait souhaitable de confronter nos résultats à la réalité via une étude de mesures issues de
-données réelles. Il est nécessaire de vérifier les résultats des simulations en les comparant à des données réelles. 
+Enfin, nous pourrions d'un travail futur de confronter nos résultats à des situations concrètes via une étude de mesures issues de
+données réelles. Il est important de vérifier les résultats des simulations en les mettant en corrélation à des données tirées de systèmes réels. 
 \newline
 
-Toutefois, bien qu'ayant ses limites, nos résultats restent valables dans les hypothèses annoncées. Ces dernières ne correspondent
-certes pas à toutes les situations possibles mais restent valables dans certains cas. De plus, l'expérience confirme la relation
-linéaire entre l'entropie et le nombre d'infections. De ce fait, si on admet l'hypothèse que la probabilité suit la loi décrite
-dans cet article (or c'est généralement le cas dans la littérature) notre modèle forme un tout cohérent.
+Bien qu'ayant ses limites, nos résultats restent valables dans les hypothèses annoncées. Ces dernières correspondent
+qu'à certaines situations possibles et sont valables dans ces cas-là. Et, les simulations confirment la relation
+linéaire entre l'entropie et le nombre d'infections. 

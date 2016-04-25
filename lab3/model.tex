@@ -22,7 +22,7 @@ On pose également $T$ comme l'ancienneté moyenne des logiciels de notre systè
 T=\sum_E p_i T_i
 \]
 
-On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. Comme un \textit{malware} ne peut cibler qu'un unique logiciel, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel seront anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est donc important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
+On recherche alors le nombre moyen d'infections par attaque en fonction de l'entropie et de l'ancienneté moyenne de notre système. Comme un \textit{malware} ne peut cibler qu'un unique logiciel, plus notre système sera hétérogène, moins le \textit{malware} pourra se propager. En revanche, plus les versions des logiciel seront anciennes, plus le nombre de failles qui y auront été découvertes sera importante, et donc plus la probabilité d'infection initiale sera importante. Il est important de prendre en compte ces deux paramètres de notre système pour calculer l'importance d'une infection potentielle que l'on pose : 
 
 \[
 N_{infection} = f(H,T) = P_{attaque}(T)*D(H)
@@ -50,7 +50,7 @@ k=1+(m-1)*(1-\frac{H}{H_{un}}) =m-\frac{m-1}{\log(n)}*H
 
 Ce premier modèle est cohérent en $H=0$, puisqu'on est alors en présence d'un système avec un unique logiciel. En cas d'infection, $k=n$ : toutes les machines sont touchées puisqu'il n'y a pas de diversité logicielle (le \textit{malware} peut se propager partout).\\
 Il est aussi cohérent pour $H=H_{un}$. En effet, chaque machine a alors un logiciel différent, et alors $k=1$ : seulement la première machine est infectée, le \textit{malware} n'arrive pas du tout à se propager.\\
-La formule finale est donc :
+La formule finale est ainsi :
 
 
 \[
@@ -107,4 +107,4 @@ Sur les figures \ref{matlab} et \ref{matlab_proj}, on observe une simulation de 
      \label{lambda}
 \end{figure}
 
-Sur la figure \ref{lambda}, on observe l'influence de la vitesse de découverte des vulnérabilités $\lambda$. On y voit que, peu importe la valeur du paramètre $\lambda$ (le seul paramètre sur lequel peut influencer l'attaquant en accentuant sa recherche de vulnérabilités), le défenseur a tout intérêt à augmenter l'entropie de son système, et par conséquent la diversité de son système. Nous voyons ainsi l'un des atout principal de ce moyen de défense : l'attaquant n'a pas vraiment de moyen de l'influencer et de le contourner.
+Sur la figure \ref{lambda}, on observe l'influence de la vitesse de découverte des vulnérabilités $\lambda$. On y voit que, peu importe la valeur du paramètre $\lambda$ (le seul paramètre sur lequel peut influencer l'attaquant en accentuant sa recherche de vulnérabilités), le défenseur a tout intérêt à augmenter l'entropie de son système, et par conséquent la diversité de son système. Nous voyons ainsi l'un des atouts principaux de ce moyen de défense : l'attaquant n'a pas vraiment de moyen de l'influencer et de le contourner.

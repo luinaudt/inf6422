@@ -18,7 +18,7 @@ La première étape consiste à définir la répartition des logiciels dans le s
 \end{figure}
 
 On répartit ensuite les logiciels au différents nœuds de manière aléatoire dans les proportions précédentes.
-Pour chacun des logiciels du système, on prends aléatoirement l'un des nœuds sur lesquels il est présent comme le point d'entrée de l'infection. Les liens du graphe sont alors confirmés si chaque paire de nœuds correspondante est de cette version. Il ne reste alors qu'à compter le nombre de machines que l'on peut atteindre depuis la machine infectée initialement. Ce sera l'ensemble des machines infectées du système si l'attaque vise cette version.
+Pour chacun des logiciels du système, on prend aléatoirement l'un des nœuds sur lesquels il est présent comme le point d'entrée de l'infection. Les liens du graphe sont alors confirmés si chaque paire de nœuds correspondante est de cette version. Il ne reste alors qu'à compter le nombre de machines que l'on peut atteindre depuis la machine infectée initialement. Ce sera l'ensemble des machines infectées du système si l'attaque vise cette version.
 On somme alors les cardinaux de tous ces ensembles, pondérés par la proportion de la version du logiciel correspondante dans le système.
 On effectue cette simulation cent fois d'affilé pour chaque distribution, et la moyenne des résultats nous donne l'étendue moyenne de l'infection en nombre de machines infectées, pour l'entropie correspondante.
 

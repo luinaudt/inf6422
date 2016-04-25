@@ -1,9 +1,9 @@
 Dans cette section, nous allons présenter les hypothèses que nous avons posé et nous présenterons notre analyse du nombre de vulnérabilités communes entre les logiciels.
 
 \subsection{Hypothèses de base}\label{sec:hypothese}
-Dans cette section, nous allons présenter les différentes hypothèses que nous faisons pour définir notre modèle.
+Nous allons maintenant présenter les différentes hypothèses que nous faisons pour définir notre modèle.
 Dans un premier temps, nous parlerons de l'environnement que nous considérons.
-Puis dans une deuxième partie, nous discuterons des capacités que possède aussi bien l'attaquant que le défenseur.
+Puis dans une deuxième partie, nous discuterons des capacités que possèdent aussi bien l'attaquant que le défenseur.
 Finalement nous poserons les objectifs de chacune des parties.
 
 \subsubsection{Environnement}\label{sec:hypothese:env}
@@ -108,11 +108,13 @@ Pour le défenseur l'objectif est d'assurer que le système reste disponible.
 
 \subsection{Analyse du nombre de vulnérabilités par logiciel}
 Nous avons extrait depuis la base de données de vulnérabilité du gouvernement américain NVD~\cite{vulnDatabase} le nombre de failles par logiciel.
-Cette base de données contient une liste des vulnérabilités connues.
-La figure~\ref{fig:vulPerLog} montre le nombre de vulnérabilités communes à au moins deux logiciels sur les 70285 vulnérabilités connues.
+Cette base de donnée contient une liste des vulnérabilités connues.
+La figure~\ref{fig:vulPerLog} montre le nombre de vulnérabilité communes à au moins deux logiciels sur les 70285 vulnérabilités connues.
 Il est également nécessaire de considérer que certains logiciels ont des identifications différentes mais sont les mêmes.
 Nous avons un total de 4,70\% de logiciels ayant des vulnérabilités communes donc 73\% concerne uniquement 2 logiciels.
-Nous pouvons considérer que notre hypothèse sur le fait qu'il n'y ait pas de vulnérabilités communes entre plusieurs logiciels est valide.
+Nous pouvons donc considérer que notre hypothèse sur le fait qu'il n'y ait pas de vulnérabilités communes entre plusieurs
+logiciels est correcte. En effet, le nombre de logiciels présents dans cette base de données nous paraît suffisamment grand pour
+être représentatif.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{data/commonVuln.png}
